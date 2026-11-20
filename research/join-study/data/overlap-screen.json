@@ -1,0 +1,247 @@
+{
+  "purpose": "Numerical localization only; see the separate interval certificate for proof.",
+  "original_reference_sha256": "e6caa998782f1bee441db9bb0a39f30096a2514a01901dc53cf572eaa1e80d91",
+  "coordinates": "Unit octagon radius; original display normalization not applied.",
+  "piece_A": "f0(K)",
+  "piece_B": "f1(K)",
+  "mirror": "S(x,y,z)=(y,x,z)",
+  "plane": "x=y",
+  "normal": [
+    0.7071067811865475,
+    -0.7071067811865475,
+    0.0
+  ],
+  "focus": [
+    0.45659459632878874,
+    0.45659459632878874,
+    0.22288254449365333
+  ],
+  "f04_center": [
+    0.46938875468133145,
+    0.443800437976246,
+    0.22288254449365333
+  ],
+  "f04_enclosing_radius": 0.23162338159264342,
+  "witness": {
+    "address": "f04(v5)",
+    "point": [
+      0.33734510641832555,
+      0.5444251992531602,
+      0.1795652974179318
+    ],
+    "signed_plane_distance": -0.14642773789225141
+  },
+  "sample_convergence": [
+    {
+      "child_depth": 4,
+      "total_word_depth": 5,
+      "sample_count_per_piece": 4096,
+      "sample_hausdorff_error_bound": 0.028654275726427588,
+      "f04_vertices_nearest_B_samples": [
+        0.05864414840441683,
+        0.07640822478976518,
+        0.05096283598871069,
+        0.007204218115539582,
+        0.06619021374518316,
+        0.0771997328909291,
+        0.0645273679657609,
+        0.004762634292862464
+      ],
+      "witness_nearest_B_sample": 0.0771997328909291,
+      "witness_distance_lower_screen": 0.04854545716450151,
+      "A_wrong_halfspace_sample_fraction": 0.138916015625,
+      "furthest_wrong_side_sample": {
+        "word": "03456",
+        "seed_vertex": 0,
+        "point": [
+          0.49284447068565274,
+          0.722640307078048,
+          -0.006210164284995226
+        ],
+        "signed_plane_distance": -0.1624901942014971,
+        "nearest_B_sample": 0.13421881578986705,
+        "distance_to_B_lower_screen": 0.10556454006343946
+      }
+    },
+    {
+      "child_depth": 5,
+      "total_word_depth": 6,
+      "sample_count_per_piece": 32768,
+      "sample_hausdorff_error_bound": 0.011868989625864478,
+      "f04_vertices_nearest_B_samples": [
+        0.05567337126249379,
+        0.07347809622862767,
+        0.050396986592765675,
+        0.0048922731309036715,
+        0.06039893419802802,
+        0.06813924034118905,
+        0.060635134834222344,
+        0.004762634292862464
+      ],
+      "witness_nearest_B_sample": 0.06813924034118905,
+      "witness_distance_lower_screen": 0.05627025071532457,
+      "A_wrong_halfspace_sample_fraction": 0.1300048828125,
+      "furthest_wrong_side_sample": {
+        "word": "034660",
+        "seed_vertex": 0,
+        "point": [
+          0.47212470580036137,
+          0.7094536827535576,
+          0.023583600409352132
+        ],
+        "signed_plane_distance": -0.16781692897567085,
+        "nearest_B_sample": 0.12284965227724348,
+        "distance_to_B_lower_screen": 0.110980662651379
+      }
+    },
+    {
+      "child_depth": 6,
+      "total_word_depth": 7,
+      "sample_count_per_piece": 262144,
+      "sample_hausdorff_error_bound": 0.004916296474698635,
+      "f04_vertices_nearest_B_samples": [
+        0.055384119798308165,
+        0.07345160861282464,
+        0.04878787701040861,
+        0.003009445232945472,
+        0.05429761569568689,
+        0.0668091221269827,
+        0.059005831066677276,
+        0.0018031098425416916
+      ],
+      "witness_nearest_B_sample": 0.0668091221269827,
+      "witness_distance_lower_screen": 0.061892825652284066,
+      "A_wrong_halfspace_sample_fraction": 0.12734222412109375,
+      "furthest_wrong_side_sample": {
+        "word": "0346600",
+        "seed_vertex": 0,
+        "point": [
+          0.47212470580036137,
+          0.7094536827535576,
+          0.023583600409352132
+        ],
+        "signed_plane_distance": -0.16781692897567085,
+        "nearest_B_sample": 0.11564736021589066,
+        "distance_to_B_lower_screen": 0.11073106374119202
+      }
+    },
+    {
+      "child_depth": 7,
+      "total_word_depth": 8,
+      "sample_count_per_piece": 2097152,
+      "sample_hausdorff_error_bound": 0.0020363966764672106,
+      "f04_vertices_nearest_B_samples": [
+        0.05496577165107326,
+        0.07267285697660206,
+        0.04864205612143923,
+        0.001240076202891411,
+        0.05130958959228474,
+        0.0668091221269827,
+        0.0564769633803122,
+        0.0014934492822283514
+      ],
+      "witness_nearest_B_sample": 0.0668091221269827,
+      "witness_distance_lower_screen": 0.06477272545051549,
+      "A_wrong_halfspace_sample_fraction": 0.1269855499267578,
+      "furthest_wrong_side_sample": {
+        "word": "03466712",
+        "seed_vertex": 0,
+        "point": [
+          0.47322849469138406,
+          0.7091807524541289,
+          0.02153953889958156
+        ],
+        "signed_plane_distance": -0.16684344150031305,
+        "nearest_B_sample": 0.11455242347325877,
+        "distance_to_B_lower_screen": 0.11251602679679155
+      }
+    }
+  ],
+  "possible_contact_outer_screens": [
+    {
+      "total_word_depth": 5,
+      "ball_radius": 0.01646096690667117,
+      "candidate_A_ball_count": 564,
+      "total_A_ball_count": 4096,
+      "max_possible_abs_signed_plane_distance": 0.13932568674049867,
+      "candidate_cover_bounds_lower": [
+        0.2757304089065976,
+        0.2593141585330657,
+        -0.1250362200549597
+      ],
+      "candidate_cover_bounds_upper": [
+        0.7875972183808618,
+        0.761528901521857,
+        0.32431490895851345
+      ]
+    },
+    {
+      "total_word_depth": 6,
+      "ball_radius": 0.0068183557425178926,
+      "candidate_A_ball_count": 2723,
+      "total_A_ball_count": 32768,
+      "max_possible_abs_signed_plane_distance": 0.12469573777380356,
+      "candidate_cover_bounds_lower": [
+        0.2923814572536103,
+        0.2896222901468483,
+        -0.11462143186432293
+      ],
+      "candidate_cover_bounds_upper": [
+        0.7650479345633908,
+        0.7530539700109329,
+        0.3108627709508919
+      ]
+    },
+    {
+      "total_word_depth": 7,
+      "ball_radius": 0.0028242554216353862,
+      "candidate_A_ball_count": 14360,
+      "total_A_ball_count": 262144,
+      "max_possible_abs_signed_plane_distance": 0.11957331145702911,
+      "candidate_cover_bounds_lower": [
+        0.29857452762962783,
+        0.2990425609684084,
+        -0.10973244819657488
+      ],
+      "candidate_cover_bounds_upper": [
+        0.7547209230407896,
+        0.7499712567505099,
+        0.3022090987497256
+      ]
+    },
+    {
+      "total_word_depth": 8,
+      "ball_radius": 0.0011698448992471212,
+      "candidate_A_ball_count": 75475,
+      "total_A_ball_count": 2097152,
+      "max_possible_abs_signed_plane_distance": 0.11628819869969036,
+      "candidate_cover_bounds_lower": [
+        0.3025412480777401,
+        0.30223672491879106,
+        -0.10661357604645505
+      ],
+      "candidate_cover_bounds_upper": [
+        0.750392748100928,
+        0.7486449978841337,
+        0.2994683940919782
+      ]
+    }
+  ],
+  "render_support_arrays_included": false,
+  "original_visual_section_specification": {
+    "z": 0.1795652974179318,
+    "u_definition": "(x+y)/sqrt(2)",
+    "w_definition": "(x-y)/sqrt(2)",
+    "u_range": [
+      0.36,
+      1.0
+    ],
+    "w_range": [
+      -0.24,
+      0.24
+    ],
+    "sampling_error": 0.0020363966764672106,
+    "interpretation": "Distance-to-sample maps. Infinite-set distance is between max(0,d-error) and d; finite thickness masks are envelopes, not proofs of fractal intersection."
+  },
+  "elapsed_seconds": 16.783
+}

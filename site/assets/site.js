@@ -14,6 +14,25 @@ document.querySelectorAll("nav a").forEach((link) => {
   }
 });
 
+const joinViews = {
+  trimmed: ["pair-trimmed", "Trimmed: crossing extensions are removed from each original piece. Complete smaller Lanterns survive within the retained geometry."],
+  original: ["pair-original", "Original: the complete neighbouring pieces interleave across the central mirror plane. Some points are shared; other crossing branches are distinct."],
+  reassigned: ["pair-reassigned", "Reassigned: no geometry is removed. Colour assigns every point to its side of the plane. The whole original fractal stays unchanged, while the newly divided parts differ from the original pieces."],
+  removed: ["removed", "Removed extensions only: the parts discarded by the local cut. These include entire miniature Lanterns absent from every other original piece."]
+};
+document.querySelectorAll("[data-join]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const [file, caption] = joinViews[button.dataset.join];
+    const image = document.getElementById("join-image");
+    image.src = "assets/joins/" + file + ".png";
+    image.alt = caption;
+    document.getElementById("join-caption").textContent = caption;
+    document.querySelectorAll("[data-join]").forEach((other) => {
+      other.setAttribute("aria-pressed", String(other === button));
+    });
+  });
+});
+
 const film = document.getElementById("hero-film");
 const toggle = document.querySelector(".film-toggle");
 if (film && toggle) {

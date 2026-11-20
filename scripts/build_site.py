@@ -15,6 +15,7 @@ OUTPUT = ROOT / "_site"
 REPOSITORY = "https://github.com/okwhynot-wtf/porous-lantern"
 SITE_URL = "https://okwhynot-wtf.github.io/porous-lantern/"
 PAGES = [
+    ("joins", "The trimmed join"),
     ("definition", "Definition"),
     ("results", "Results & evidence"),
     ("related", "Published relatives"),
@@ -173,8 +174,8 @@ def main():
         "preview_stills": "".join(still_markup(still, preview=True) for still in media["stills"][1:4]),
     })
     (OUTPUT / "index.html").write_text(render_page(
-        "index.html", "Porous Lantern — an eightfold spatial fractal",
-        "Explore Porous Lantern: an eightfold self-similar spatial fractal, seen through copper-and-teal images, a silent film and reproducible mathematics.",
+        "index.html", "Porous Lantern — the trimmed join",
+        "A cleaner join for Porous Lantern: matching interfaces, surviving exact fractal copies, and the original eightfold construction behind the study.",
         home), encoding="utf-8")
     gallery = substitute((ROOT / "site/templates/gallery.html").read_text(encoding="utf-8"), {
         "gallery_stills": "".join(still_markup(still) for still in media["stills"]),
@@ -182,7 +183,7 @@ def main():
     })
     (OUTPUT / "gallery.html").write_text(render_page(
         "gallery.html", "Gallery — Porous Lantern",
-        "Six views of the original Porous Lantern fractal, with JPEG images, lossless PNG masters and a silent film.",
+        "The preferred trimmed join study and six preserved views of the original Porous Lantern, with downloadable images and a silent film.",
         gallery), encoding="utf-8")
     for slug, label in PAGES:
         source = ROOT / "docs" / f"{slug}.md"

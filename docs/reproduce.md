@@ -19,6 +19,20 @@ uv run --isolated --python 3.12 --with-requirements requirements.txt python math
 
 See [media and TouchDesigner](media.md) for rendering dependencies, project controls and film export.
 
+## Reproduce the new join findings
+
+The separate [join study package](../research/join-study/README.md) certifies
+the unique geometry removed by trimming and the complete miniature that
+survives. It reads the preserved exact maps and writes its own receipt:
+
+```sh
+python research/join-study/source/certify_interface.py
+```
+
+The [join account](joins.md) supplies the analytic mirror, dimension and
+attractor-uniqueness arguments. The original verifier below continues to
+describe the untrimmed Lantern.
+
 ## What the verifier checks
 
 [exact.py](../math/exact.py) reconstructs the eight maps from rational constants, \(\sqrt2\), \(\sqrt3\), and the exact chord-frame formula. It uses outward interval arithmetic at 60 decimal digits, independently of the decimal rendering matrices.

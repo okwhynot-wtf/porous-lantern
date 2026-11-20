@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "created_utc": "2026-11-20T02:19:34.136356+00:00",
+  "checks": [
+    "Exact interval verifier passes in repository",
+    "Exact interval verifier passes after isolated relocation with only four repository math inputs; unrelated working directory",
+    "Receipt input hash keys are portable repository-relative POSIX paths",
+    "Numerical screen regenerated successfully at total depths 5, 6, 7 and 8",
+    "Both migrated Python source files parse"
+  ],
+  "exact_proof_inputs": [
+    "math/exact.py",
+    "math/model.py",
+    "math/data/reference.json",
+    "math/data/covers.json"
+  ],
+  "verification_scope": "Research package only; public site rendering and asset validation are handled by the site build."
+}

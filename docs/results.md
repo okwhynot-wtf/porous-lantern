@@ -1,5 +1,10 @@
 # Results and evidence
 
+These results describe the **original, untrimmed Lantern**. The preferred
+[trimmed join study](joins.md) now adds exact matching interfaces and retained
+miniature copies. Its connectedness and global replacement rule are separate
+questions; the original object's properties below do not automatically transfer.
+
 The fixed Porous Lantern is connected, genuinely spatial and exactly self-similar. It has eightfold rotational symmetry and eight vertical mirror planes. Its eight first-generation pieces meet in a cycle, with additional contacts beyond the designed joining vertices. The central passage and several specified smaller passages are clear of the whole infinite attractor.
 
 These conclusions combine analytic arguments with finite outward-interval checks. The checked premises are recorded in [verification.json](../math/data/verification.json) and can be rebuilt with [verify.py](../math/verify.py). This is a reproducible mathematical investigation, not independent peer review or proof-assistant formalization.
@@ -91,6 +96,14 @@ Connectedness forces \(E\) to meet \(x=y\). Reflection \(S\) fixes any crossing 
 \]
 
 places the whole subcopy, and hence the crossing, more than 0.18 from the planned join \(v_1\). Rotation gives the same conclusion for every adjacent pair. The full intersection sets, their dimensions and their numbers of components remain unclassified.
+
+## The trimmed join
+
+The local join investigation also certifies that trimming removes unique
+geometry, rather than only duplicate points. The edited pair contains an entire
+original Lantern copy and therefore has the same Hausdorff dimension as the
+original, while the edited whole cannot satisfy the original eight-map equation.
+See [the new join findings](joins.md) for the construction, proof and limits.
 
 ## Clear passages
 

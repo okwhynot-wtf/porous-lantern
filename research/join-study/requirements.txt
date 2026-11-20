@@ -1,0 +1,3 @@
+# Optional floating-point anatomy; the exact proof needs only base requirements.
+-r ../../requirements.txt
+scipy==1.16.3

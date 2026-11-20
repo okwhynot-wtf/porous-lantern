@@ -1,0 +1,256 @@
+{
+  "status": "passed",
+  "recipe": "L3-30, unchanged",
+  "created_utc": "2026-11-20T02:17:26.550511+00:00",
+  "python": "3.14.0",
+  "mpmath": "1.3.0",
+  "interval_precision_decimal_digits": 60,
+  "units": "unit circumradius of retained regular octagon; before display normalization",
+  "diagnostics_warning": "Float endpoints are readable diagnostics, not certified decimal bounds. Rational bounds and interval checks carry the certificate.",
+  "original_inputs_sha256": {
+    "math/exact.py": "dfb13e412feee6d058f90887a4fef1bff0757e2c5759b0281ec05b9a55fd202a",
+    "math/model.py": "53ce0d354cad5f20dfb9ad4870c40c65527db61b3f7ff2aa3e6b8e75272b0f90",
+    "math/data/reference.json": "e6caa998782f1bee441db9bb0a39f30096a2514a01901dc53cf572eaa1e80d91",
+    "math/data/covers.json": "2043fb6e4d946b414e17945b7a151897139b0c3473952db1ff6e41f7809fe0b1"
+  },
+  "verifier_sha256": "5fdb0d21f8242df7a45f611ee3c2cb229d588826e37aac3b7165f83683f0f484",
+  "invariant_ball": {
+    "radius": "27/20",
+    "minimum_margin_diagnostic": 0.0002253967387322285
+  },
+  "construction": {
+    "A": "f_0(K)",
+    "B": "f_1(K)",
+    "plane": "x=y",
+    "signed_distance": "ell(x,y,z)=(x-y)/sqrt(2)",
+    "A_kept": "A intersect {ell >= 0}",
+    "B_kept": "B intersect {ell <= 0}",
+    "full_variant": "C=(A intersect H+) union (B intersect H-) union f_2(K) union ... union f_7(K)"
+  },
+  "removed_witness": {
+    "word": "04",
+    "vertex": 5,
+    "coordinates_diagnostic": [
+      [
+        0.33734510641832594,
+        0.33734510641832594
+      ],
+      [
+        0.5444251992531601,
+        0.5444251992531601
+      ],
+      [
+        0.17956529741793179,
+        0.17956529741793179
+      ]
+    ],
+    "signed_distance_diagnostic": [
+      -0.14642773789225105,
+      -0.14642773789225105
+    ],
+    "signed_distance_strict_upper_bound": "-7/50",
+    "distance_from_each_other_root_piece_strict_lower_bound": "3/50",
+    "complete_exclusion_covers": [
+      {
+        "root": "1",
+        "leaves": [
+          "100",
+          "101",
+          "102",
+          "103",
+          "104",
+          "105",
+          "106",
+          "107",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "160",
+          "161",
+          "1620",
+          "1621",
+          "1622",
+          "16230",
+          "16231",
+          "16232",
+          "16233",
+          "16234",
+          "16235",
+          "16236",
+          "16237",
+          "16240",
+          "16241",
+          "16242",
+          "16243",
+          "16244",
+          "16245",
+          "16246",
+          "16247",
+          "1625",
+          "1626",
+          "1627",
+          "1630",
+          "1631",
+          "1632",
+          "1633",
+          "1634",
+          "1635",
+          "1636",
+          "1637",
+          "164",
+          "165",
+          "166",
+          "167",
+          "170",
+          "171",
+          "172",
+          "173",
+          "1740",
+          "1741",
+          "1742",
+          "1743",
+          "1744",
+          "1745",
+          "1746",
+          "1747",
+          "1750",
+          "1751",
+          "1752",
+          "1753",
+          "1754",
+          "1755",
+          "1756",
+          "1757",
+          "1760",
+          "1761",
+          "1762",
+          "1763",
+          "1764",
+          "1765",
+          "1766",
+          "1767",
+          "177"
+        ],
+        "leaf_count": 78,
+        "maximum_depth": 5,
+        "minimum_squared_margin_diagnostic": 3.1948394911565665e-06
+      },
+      {
+        "root": "2",
+        "leaves": [
+          "2"
+        ],
+        "leaf_count": 1,
+        "maximum_depth": 1,
+        "minimum_squared_margin_diagnostic": 0.06741182729193695
+      },
+      {
+        "root": "3",
+        "leaves": [
+          "3"
+        ],
+        "leaf_count": 1,
+        "maximum_depth": 1,
+        "minimum_squared_margin_diagnostic": 0.8181629971536859
+      },
+      {
+        "root": "4",
+        "leaves": [
+          "4"
+        ],
+        "leaf_count": 1,
+        "maximum_depth": 1,
+        "minimum_squared_margin_diagnostic": 1.4736947977647898
+      },
+      {
+        "root": "5",
+        "leaves": [
+          "5"
+        ],
+        "leaf_count": 1,
+        "maximum_depth": 1,
+        "minimum_squared_margin_diagnostic": 1.6500055908941198
+      },
+      {
+        "root": "6",
+        "leaves": [
+          "6"
+        ],
+        "leaf_count": 1,
+        "maximum_depth": 1,
+        "minimum_squared_margin_diagnostic": 1.2438149051192713
+      },
+      {
+        "root": "7",
+        "leaves": [
+          "7"
+        ],
+        "leaf_count": 1,
+        "maximum_depth": 1,
+        "minimum_squared_margin_diagnostic": 0.4930637352575223
+      }
+    ]
+  },
+  "retained_whole_copy": {
+    "word": "00",
+    "centre_diagnostic": [
+      [
+        1.0143951443064823,
+        1.0143951443064823
+      ],
+      [
+        0.17080297661533697,
+        0.17080297661533697
+      ],
+      [
+        -0.007508296917118181,
+        -0.007508296917118181
+      ]
+    ],
+    "radius_diagnostic": [
+      0.23162338159264337,
+      0.23162338159264337
+    ],
+    "minimum_signed_distance_strict_lower_bound": "9/25",
+    "plane_margin_diagnostic": [
+      0.36488636073762465,
+      0.36488636073762465
+    ]
+  },
+  "removed_whole_copy": {
+    "word": "04555",
+    "centre_witness": "f_04(v5)",
+    "radius_about_witness_formula": "(47/20)*(sqrt(2)-1)^5",
+    "radius_about_witness_diagnostic": [
+      0.028654275726427574,
+      0.028654275726427574
+    ],
+    "radius_strict_upper_bound": "3/100",
+    "signed_distance_strict_upper_bound": "-11/100",
+    "distance_from_each_other_root_piece_strict_lower_bound": "3/100"
+  },
+  "genuine_seam_crossing": {
+    "word": "04",
+    "negative_vertex": 5,
+    "positive_vertex": 1,
+    "positive_signed_distance_diagnostic": [
+      0.18261508241488106,
+      0.18261508241488106
+    ],
+    "distance_from_v1_strict_lower_bound": "9/50",
+    "squared_margin_diagnostic": [
+      0.006082910866518015,
+      0.006082910866518015
+    ]
+  },
+  "analytic_conclusions": [
+    "S(x,y,z)=(y,x,z) exchanges A and B, so A intersect P = B intersect P.",
+    "The clipped pair meets exactly at A intersect P and is disjoint away from P.",
+    "The full variant C is a proper subset of K, so cannot satisfy the original eight-map fixed-point equation.",
+    "Both C and the clipped pair contain f_00(K), hence have the same Hausdorff dimension as K.",
+    "K minus C contains f_04555(K), so removed geometry also contains an exact whole Lantern copy.",
+    "No claim is made that C lacks some other IFS, that its seam is smooth, or that clipping preserves connectedness."
+  ]
+}

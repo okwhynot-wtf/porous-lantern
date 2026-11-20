@@ -3,7 +3,9 @@
 Porous Lantern is an independent project by **okwhynot-wtf**, developed through
 mathematical experiments and visual comparison. The original L3-30 object was
 selected for its eightfold symmetry, repeated openings and sculptural appearance.
-This publication fixes that recipe and records the evidence for its properties.
+This publication preserves that recipe and records the evidence for its properties.
+The later [trimmed join study](joins.md) is the preferred visual direction,
+documented as a local derived variant with its own evidence and limitations.
 
 ## Assistance and review
 
@@ -32,6 +34,15 @@ current account. The original decimal recipe is preserved in
 [reference.json](../math/data/reference.json), while the verifier reconstructs
 its maps independently from exact constants. Later revisions should identify
 changes to either the mathematics or its visual presentation.
+
+## The join update
+
+The 20 November 2026 join update adds a preferred trimmed interface, comparison
+images, exact exclusion and retention certificates, and an explanation of
+contained self-similarity versus a whole-object replacement rule. The original
+L3-30 mathematics, original six stills, film and TouchDesigner project are
+preserved. The update does not claim a complete construction with all joins
+trimmed, a smooth seam, or connectedness after clipping.
 
 ## Credit and licences
 

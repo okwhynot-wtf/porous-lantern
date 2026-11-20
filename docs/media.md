@@ -1,10 +1,38 @@
 # Images, film and TouchDesigner
 
+## The preferred trimmed join
+
+The new [join study](joins.md) presents the preferred trimmed interface,
+comparisons with the original and reassigned geometry, an annotated anatomy,
+and horizontal sections. The [trimmed PNG](../site/assets/joins/pair-trimmed.png)
+is a computed 1100 × 880 image with two spatial samples per pixel. It uses the
+same solid rendering style and frozen field as the original Lantern, with a
+separate halfspace cut applied to the selected pair.
+
+These are finite envelopes of the exact sets. Planar cut surfaces in the
+rendering do not establish smooth surfaces of the infinite fractal. Only this
+join has been studied: there is no new all-joins film or TouchDesigner release.
+The film and studio below still show the preserved original geometry.
+
+The reproducible [study renderer](../research/join-study/source/render_join.py)
+and [shader](../research/join-study/source/join.glsl) read the original texture
+without altering it. From the repository root:
+
+```sh
+python -m pip install -r visual-requirements.txt
+python research/join-study/source/render_join.py
+```
+
+Output is written under `.build/join-study`, alongside a receipt recording the
+shader and original texture hashes.
+
+## The original release
+
 The six stills and the silent hero film show the same fixed Porous Lantern.
 Copper, teal and steel distinguish regions of its repeated structure. Lighting,
 surface shading and the distance-atlas technique derive from Sixfold.
 
-## The visual edition
+## The original visual edition
 
 The [gallery](https://okwhynot-wtf.github.io/porous-lantern/gallery.html) contains
 the hero composition, an axial view, a low side view, the underside, and two
