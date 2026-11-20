@@ -1,0 +1,207 @@
+{
+  "recipe": "L3-30",
+  "status": "passed",
+  "precision_decimal_digits": 60,
+  "python": "3.14.0",
+  "mpmath": "1.3.0",
+  "units": "unit circumradius of the retained regular octagon",
+  "invariant_ball_radius": "27/20",
+  "invariant_ball_margin_diagnostic": 0.0002253967387322285,
+  "nonplanar_witness": {
+    "word": "0",
+    "vertex": 1,
+    "z_diagnostic": [
+      -0.11208538229199128,
+      -0.11208538229199128
+    ]
+  },
+  "volume_cover_ratio_diagnostic": [
+    0.5685424949238019,
+    0.5685424949238019
+  ],
+  "Hausdorff_dimension_lower_bound": 1,
+  "Hausdorff_dimension_upper_bound_formula": "log(8)/log(1+sqrt(2))",
+  "Hausdorff_dimension_upper_bound_diagnostic": [
+    2.3593191040721844,
+    2.3593191040721844
+  ],
+  "passages": [
+    {
+      "word": "root",
+      "radius_formula": "(11/50)*(sqrt(2)-1)^0",
+      "radius_diagnostic": [
+        0.21999999999999997,
+        0.21999999999999997
+      ],
+      "cover_leaves": 8,
+      "maximum_cover_depth": 1,
+      "minimum_squared_margin_diagnostic": 0.011610700690255382
+    },
+    {
+      "word": "0",
+      "radius_formula": "(11/50)*(sqrt(2)-1)^1",
+      "radius_diagnostic": [
+        0.0911269837220809,
+        0.0911269837220809
+      ],
+      "cover_leaves": 29,
+      "maximum_cover_depth": 2,
+      "minimum_squared_margin_diagnostic": 0.001992081301138511
+    },
+    {
+      "word": "00",
+      "radius_formula": "(11/50)*(sqrt(2)-1)^2",
+      "radius_diagnostic": [
+        0.03774603255583817,
+        0.03774603255583817
+      ],
+      "cover_leaves": 50,
+      "maximum_cover_depth": 3,
+      "minimum_squared_margin_diagnostic": 0.00023215000467185777
+    },
+    {
+      "word": "01",
+      "radius_formula": "(11/50)*(sqrt(2)-1)^2",
+      "radius_diagnostic": [
+        0.03774603255583817,
+        0.03774603255583817
+      ],
+      "cover_leaves": 36,
+      "maximum_cover_depth": 3,
+      "minimum_squared_margin_diagnostic": 0.00034178711657568506
+    },
+    {
+      "word": "02",
+      "radius_formula": "(11/50)*(sqrt(2)-1)^2",
+      "radius_diagnostic": [
+        0.03774603255583817,
+        0.03774603255583817
+      ],
+      "cover_leaves": 50,
+      "maximum_cover_depth": 3,
+      "minimum_squared_margin_diagnostic": 0.00023215000467185777
+    },
+    {
+      "word": "05",
+      "radius_formula": "(11/50)*(sqrt(2)-1)^2",
+      "radius_diagnostic": [
+        0.03774603255583817,
+        0.03774603255583817
+      ],
+      "cover_leaves": 50,
+      "maximum_cover_depth": 3,
+      "minimum_squared_margin_diagnostic": 0.00034178711657568506
+    },
+    {
+      "word": "000",
+      "radius_formula": "(11/50)*(sqrt(2)-1)^3",
+      "radius_diagnostic": [
+        0.01563491861040455,
+        0.01563491861040455
+      ],
+      "cover_leaves": 148,
+      "maximum_cover_depth": 6,
+      "minimum_squared_margin_diagnostic": 2.2461272888729755e-05
+    }
+  ],
+  "separated_pairs": [
+    {
+      "separation": 2,
+      "gap_lower_bound": "1/100",
+      "cover_leaves": 64,
+      "minimum_squared_margin_diagnostic": 0.05444904421658635
+    },
+    {
+      "separation": 3,
+      "gap_lower_bound": "1/100",
+      "cover_leaves": 1,
+      "minimum_squared_margin_diagnostic": 0.8392941938404137
+    },
+    {
+      "separation": 4,
+      "gap_lower_bound": "1/100",
+      "cover_leaves": 1,
+      "minimum_squared_margin_diagnostic": 1.2017466945913482
+    }
+  ],
+  "additional_contact": {
+    "word": "04",
+    "negative_vertex": 5,
+    "positive_vertex": 1,
+    "negative_signed_distance_diagnostic": [
+      -0.14642773789225105,
+      -0.14642773789225105
+    ],
+    "positive_signed_distance_diagnostic": [
+      0.18261508241488106,
+      0.18261508241488106
+    ],
+    "distance_from_prescribed_join_lower_bound": "18/100",
+    "squared_join_margin_diagnostic": [
+      0.006082910866518015,
+      0.006082910866518015
+    ]
+  },
+  "nominal_tube_intrusions": [
+    {
+      "axis_word": "03",
+      "point_word": "10523",
+      "vertex": 5,
+      "distance_diagnostic": [
+        0.035957935072345126,
+        0.035957935072345126
+      ],
+      "nominal_radius_diagnostic": [
+        0.03774603255583817,
+        0.03774603255583817
+      ]
+    },
+    {
+      "axis_word": "04",
+      "point_word": "171670",
+      "vertex": 2,
+      "distance_diagnostic": [
+        0.035476806415013155,
+        0.035476806415013155
+      ],
+      "nominal_radius_diagnostic": [
+        0.03774603255583817,
+        0.03774603255583817
+      ]
+    },
+    {
+      "axis_word": "06",
+      "point_word": "733012",
+      "vertex": 3,
+      "distance_diagnostic": [
+        0.035476806415013155,
+        0.035476806415013155
+      ],
+      "nominal_radius_diagnostic": [
+        0.03774603255583817,
+        0.03774603255583817
+      ]
+    },
+    {
+      "axis_word": "07",
+      "point_word": "72745",
+      "vertex": 6,
+      "distance_diagnostic": [
+        0.035957935072345126,
+        0.035957935072345126
+      ],
+      "nominal_radius_diagnostic": [
+        0.03774603255583817,
+        0.03774603255583817
+      ]
+    }
+  ],
+  "maximum_display_export_error": 1.1102230246251565e-15,
+  "inputs_sha256": {
+    "exact.py": "dfb13e412feee6d058f90887a4fef1bff0757e2c5759b0281ec05b9a55fd202a",
+    "verify.py": "43036b05b9aab7e683ea2bb2b3af7c842f5d151aaca92d9c2e663cafc23cebe8",
+    "data/reference.json": "e6caa998782f1bee441db9bb0a39f30096a2514a01901dc53cf572eaa1e80d91",
+    "data/covers.json": "2043fb6e4d946b414e17945b7a151897139b0c3473952db1ff6e41f7809fe0b1"
+  },
+  "scope": "Finite interval inequalities and complete covers checked. The analytic connectedness, symmetry, contact and winding arguments are in docs/results.md. Diagnostic decimal floats are not interval endpoints. Not proof-assistant verification or independent peer review."
+}

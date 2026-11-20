@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "search_date": "2026-11-20",
+  "timezone": "Australia/Sydney",
+  "subject": "Original Porous Lantern L3-30",
+  "fixed_parameters": {
+    "maps": 8,
+    "contraction_ratio": "sqrt(2)-1",
+    "generator": "G=Rz(pi/4); fi=Gi f0 G^(-i)",
+    "anchor_vertices": "vi=(cos(i*pi/4),sin(i*pi/4),0)",
+    "endpoint_rule": "fi(vi)=vi; fi(v(i+3))=v(i+1), indices modulo 8",
+    "chord_frame_roll_degrees": 30,
+    "original_reference_json_sha256": "e6caa998782f1bee441db9bb0a39f30096a2514a01901dc53cf572eaa1e80d91"
+  },
+  "method": "Web search, followed by examination of promising papers, author texts, or publisher records. Source publication dates were taken from the papers or publication records, not search-engine crawl dates. No exhaustive catalogue search or proof of historical priority was attempted.",
+  "query_batches": [
+    [
+      "\"octagonal\" \"fractal\" \"necklace\"",
+      "\"self-similar\" \"necklaces\" \"three\" dimension",
+      "\"octagon\" \"iterated function\" \"rotation\" fractal",
+      "\"sqrt(2)-1\" \"fractal\" octagon"
+    ],
+    [
+      "\"Fractal necklaces with no cut points\"",
+      "\"fractal necklace\" self similar 3D",
+      "\"self-similar zipper\" three dimensional",
+      "\"Sierpinski\" \"octagon\" \"iterated\""
+    ],
+    [
+      "fractal \"octagon\" \"twist\"",
+      "fractal \"necklace\" \"rotation\" similarities",
+      "\"More variations on the Sierpiński sieve\"",
+      "\"three-dimensional\" \"polygon\" \"iterated function systems\" fractal"
+    ],
+    [
+      "\"octagonal\" \"fractal\" \"3D\"",
+      "\"eightfold\" \"iterated function system\"",
+      "\"8-fold\" \"self-similar\" fractal",
+      "fractal \"octagon\" \"30\" rotation"
+    ],
+    [
+      "\"fractal\" \"lantern\" IFS",
+      "\"twisted\" \"n-flake\"",
+      "\"octagonal\" \"IFS\" fractal 3 dimensional",
+      "\"eight\" \"similitudes\" \"R3\" fractal"
+    ],
+    [
+      "\"octagonal gasket\" fractal",
+      "\"8-gasket\" \"three\"",
+      "\"octaflake\" \"twist\"",
+      "\"Hare\" \"gasket\" \"three-dimensional\""
+    ],
+    [
+      "fractal self similar spatial zippers octagon rotation",
+      "fractal octagonal sponge 3D IFS",
+      "fractal \"twist\" \"polyflake\""
+    ],
+    [
+      "\"FRACTAL n-GONS AND THEIR MANDELBROT SETS\""
+    ],
+    [
+      "\"On Selfsimilar Jordan Curves on the Plane\" DOI",
+      "\"fractal n-gons\" \"three\" rotations",
+      "\"self-similar\" \"octagonal\" \"spatial\""
+    ],
+    [
+      "\"fractal\" \"necklace\" \"twisted\"",
+      "\"self-similar\" \"cyclic\" \"R^3\" rotations",
+      "\"fractal\" \"octagonal\" \"30 degrees\"",
+      "\"fractal\" \"eight\" \"chord\""
+    ]
+  ],
+  "primary_sources": [
+    {
+      "id": "hare2010",
+      "author": "Kevin G. Hare",
+      "title": "More Variations on the Sierpiński Sieve",
+      "year": 2010,
+      "publication": "Canadian Journal of Mathematics 62(3), 543–562",
+      "doi": "10.4153/CJM-2010-036-3",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/3B573F6E4F1B54E1E112C8B4BAC5E43E/S0008414X00005277a.pdf/more_variations_on_the_sierpinski_sieve.pdf",
+      "examined": "Full text, especially Section 2, equation (2.1), Figures 3 and 7, and the order-one eight-gasket discussion.",
+      "relevance": "Closest explicit construction found: planar eight-gasket with the same ratio and multiple overlaps.",
+      "comparison_status": "Our analytical deduction identifies the zero-roll control with this attractor up to similarity. The fixed 30-degree Lantern is nonplanar, so this is not an exact match to the released object."
+    },
+    {
+      "id": "bandt_hung2008",
+      "authors": ["Christoph Bandt", "Nguyen Viet Hung"],
+      "title": "Fractal n-gons and their Mandelbrot sets",
+      "year": 2008,
+      "publication": "Nonlinearity 21, 2653–2670",
+      "doi": "10.1088/0951-7715/21/11/009",
+      "url": "https://citeseerx.ist.psu.edu/document?doi=6dfa144d60e222dc88aa39515b735d00efb3c882&repid=rep1&type=pdf",
+      "author_publications_url": "https://math-inf.uni-greifswald.de/en/institut/ueber-uns/mitarbeitende/emeriti/bandt/publikationen/",
+      "examined": "Paper abstract, introduction, definition, and Proposition 1; publication metadata checked against the author's university list.",
+      "relevance": "Cyclic symmetry acting transitively on planar self-similar pieces.",
+      "comparison_status": "General methodological precedent; planar scope does not identify the nonplanar Lantern.",
+      "access_note": "The DOI URL did not resolve through the web tool; the paper text and author publication listing were available."
+    },
+    {
+      "id": "hutchinson1981",
+      "author": "John E. Hutchinson",
+      "title": "Fractals and Self Similarity",
+      "year": 1981,
+      "publication": "Indiana University Mathematics Journal 30, 713–747",
+      "doi": "10.1512/iumj.1981.30.30055",
+      "url": "https://maths-people.anu.edu.au/~john/Assets/Research%20Papers/fractals_self-similarity.pdf",
+      "examined": "Author-hosted retyped paper, introduction and section structure for invariant sets and parametrised curves.",
+      "relevance": "Foundational contraction-IFS theory.",
+      "comparison_status": "Foundation, not an exact shape precedent."
+    },
+    {
+      "id": "aseev_tetenov_kravchenko2003",
+      "authors": ["V. V. Aseev", "A. V. Tetenov", "A. S. Kravchenko"],
+      "title": "On Selfsimilar Jordan Curves on the Plane",
+      "year": 2003,
+      "publication": "Siberian Mathematical Journal 44, 379–386",
+      "doi": "10.1023/A:1023848327898",
+      "url": "https://doi.org/10.1023/A:1023848327898",
+      "examined": "Publisher abstract and bibliographic record, and indexed opening of author/institution-hosted full text describing endpoint coupling and general zipper definitions.",
+      "relevance": "Established endpoint-coupled self-similar zipper method.",
+      "comparison_status": "Methodological precedent; does not establish a Jordan property for the Lantern's paths."
+    },
+    {
+      "id": "wen2022",
+      "author": "Fan Wen",
+      "title": "Fractal necklaces with no cut points",
+      "preprint_year": 2021,
+      "journal_year": 2022,
+      "publication": "Fractals 30, 2250091",
+      "doi": "10.1142/S0218348X22500918",
+      "url": "https://arxiv.org/abs/2105.00407",
+      "full_text_url": "https://arxiv.org/html/2105.00407",
+      "examined": "Author preprint v4 dated 19 February 2022, especially Definition 1 and introductory topology discussion.",
+      "relevance": "Precisely states single-point intersections required for this formal necklace class.",
+      "comparison_status": "The Lantern's displayed eight-map system violates the adjacent-singleton hypothesis. No theorem transfer asserted.",
+      "access_note": "Journal DOI URL did not resolve through the web tool; the author's full preprint was available."
+    },
+    {
+      "id": "plante2017",
+      "author": "Donald Plante",
+      "title": "3D Printable Golden Sponges",
+      "year": 2017,
+      "publication": "Proceedings of Bridges 2017, 451–454",
+      "url": "https://archive.bridgesmathart.org/2017/bridges2017-451.html",
+      "pdf_url": "https://archive.bridgesmathart.org/2017/bridges2017-451.pdf",
+      "examined": "Proceedings record and paper abstract/introduction.",
+      "relevance": "Physical finite approximations of overlapping spatial IFS attractors.",
+      "comparison_status": "Broader sculpture context; no exact Lantern match."
+    }
+  ],
+  "additional_leads_screened": [
+    {
+      "title": "Golden Gaskets: Variations on the Sierpiński Sieve",
+      "authors": ["Dave Broomhead", "James Montaldi", "Nikita Sidorov"],
+      "year": 2004,
+      "url": "https://eprints.maths.manchester.ac.uk/43/01/golden.pdf",
+      "disposition": "Primary text examined; overlaps and holes in planar triangular IFSs. Hare's octagonal extension is the closer source used in the public comparison."
+    },
+    {
+      "title": "Topological Rigidity of good fractal necklaces",
+      "author": "Fan Wen",
+      "year": 2021,
+      "url": "https://arxiv.org/abs/2105.01318",
+      "disposition": "Author abstract examined; concerns good necklaces. Not used to infer rigidity for the Lantern."
+    },
+    {
+      "title": "Octagonal Tiling (1225), IFS Encyclopedia",
+      "url": "https://ifsdb.github.io/ifs/octagonal/",
+      "disposition": "Indexed explicit AIFS screened: planar, graph-directed, two attractor types. Shares silver-ratio geometry but not the spatial eight-map recipe. Not used as historical priority evidence."
+    },
+    {
+      "title": "Ammann–Beenker Tiling, IFS Encyclopedia",
+      "url": "https://ifsdb.github.io/ifs/ammann-beenker/",
+      "disposition": "Indexed description screened; planar substitution tiling, not the Lantern. Not treated as an exact prior-art match."
+    },
+    {
+      "title": "Antoine's Necklace",
+      "url": "https://www.paulbourke.net/fractals/necklace/",
+      "disposition": "Search lead only. A Cantor-set necklace is a different topology from the connected Lantern; not used to establish historical details in the public account."
+    },
+    {
+      "title": "Styrofoam IFS Gallery",
+      "url": "https://phtolo.se/fractals/gallery/index.htm",
+      "disposition": "Indexed artist examples screened, including rotated hexagonal arrangements. No inspected formula identifies the fixed Lantern; no priority conclusion drawn from visual descriptions."
+    }
+  ],
+  "analytical_comparison": {
+    "label": "Deduction made in this study, checked independently by the mathematical-audit agent",
+    "parameter_change_for_comparison_only": "Set beta=0; the released beta=30 recipe remains fixed.",
+    "identities": [
+      "Q0=Rz(-pi/4)=G^-1",
+      "Qi=G^-1 for every i",
+      "t0=(1/sqrt2,1-1/sqrt2,0)",
+      "ti=Gi t0",
+      "GK0=K0",
+      "K0=union_i(r G^-1 K0+ti)=union_i(r K0+ti)"
+    ],
+    "conclusion": "The zero-roll control is similarity-equivalent to Hare's order-one eight-gasket. The nonzero-roll attractor is spatial and cannot be similarity-equivalent to a planar set."
+  },
+  "finding": "No inspected source identified the complete fixed L3-30 spatial recipe. Established mechanisms and a known planar control were identified.",
+  "novelty_claim": false,
+  "limitations": [
+    "This was a targeted web and literature search, not an exhaustive review.",
+    "Unindexed artwork, unavailable material, and unpublished experiments were not excluded.",
+    "Different coordinate normalisations, map permutations, or internal symmetries may disguise identical attractors.",
+    "No general algorithm deciding similarity of all candidate attractors was run.",
+    "A similar picture or a shared contraction ratio does not by itself establish an identical recipe or set.",
+    "No contact with the cited authors was undertaken."
+  ]
+}

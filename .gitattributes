@@ -1,0 +1,3 @@
+# Preserve the exact bytes used by the frozen recipe and embedded asset hashes.
+# The release contains UTF-8 source; Python reads either LF or CRLF normally.
+* -text

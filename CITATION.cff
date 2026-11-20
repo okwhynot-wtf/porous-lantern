@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite the version of Porous Lantern used."
+title: "Porous Lantern: an eightfold spatial fractal study"
+type: software
+authors:
+  - name: okwhynot-wtf
+version: 1.0.0
+date-released: 2026-11-20
+url: "https://okwhynot-wtf.github.io/porous-lantern/"
+repository-code: "https://github.com/okwhynot-wtf/porous-lantern"
+license: MIT
+abstract: "A fixed eight-map self-similar spatial construction, its mathematical evidence, solid-rendered visual study and TouchDesigner studio. Writing and visual assets are CC BY 4.0."

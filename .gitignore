@@ -1,0 +1,9 @@
+_site/
+.build/
+__pycache__/
+*.pyc
+Backup/
+touchdesigner/*.1.toe
+touchdesigner/*.2.toe
+media/films/
+.venv/

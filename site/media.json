@@ -1,0 +1,16 @@
+{
+  "film": {
+    "url": "assets/porous-lantern-hero.mp4",
+    "download_url": "https://github.com/okwhynot-wtf/porous-lantern/releases/download/v1.0.0/Porous-Lantern-A-Closer-Look.mp4",
+    "caption": "A closer look. A 48-second silent journey from the whole Lantern through three generations and back. Native 720p, 24 fps.",
+    "poster": "assets/lantern-hero.jpg"
+  },
+  "stills": [
+    {"slug": "lantern-hero", "title": "The Lantern", "caption": "The complete form, rendered in copper and teal.", "alt": "Porous Lantern, a copper-and-teal eight-lobed fractal around a central opening", "width": 1920, "height": 1080},
+    {"slug": "lantern-front", "title": "Eightfold", "caption": "The arrangement seen along its symmetry axis.", "alt": "The Lantern viewed along its axis, showing its eightfold rotational symmetry"},
+    {"slug": "lantern-side", "title": "In profile", "caption": "The depth and folds of the spatial construction.", "alt": "A side view of the Lantern showing its nonplanar folds and depth"},
+    {"slug": "lantern-back", "title": "The other side", "caption": "A different view of the same fixed geometry.", "alt": "The opposite side of the Porous Lantern fractal"},
+    {"slug": "lantern-detail", "title": "Within a lobe", "caption": "Smaller copies become visible in a close view.", "alt": "A close view of one lobe, revealing repeated smaller Lantern structures"},
+    {"slug": "lantern-zoom", "title": "A smaller world", "caption": "Following the construction into finer detail.", "alt": "A deeper view into the Lantern's repeated geometry"}
+  ]
+}

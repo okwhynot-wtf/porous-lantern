@@ -1,0 +1,21 @@
+{
+  "comparison": "Original anatomy renderer, six explicit levels; integer similarity camera, 480x360 single sample",
+  "results": [
+    {
+      "depth": 0,
+      "mean_absolute_error_8bit": 0.002827932098765432
+    },
+    {
+      "depth": 1,
+      "mean_absolute_error_8bit": 0.005617283950617284
+    },
+    {
+      "depth": 2,
+      "mean_absolute_error_8bit": 0.00753858024691358
+    },
+    {
+      "depth": 3,
+      "mean_absolute_error_8bit": 0.012980324074074075
+    }
+  ]
+}

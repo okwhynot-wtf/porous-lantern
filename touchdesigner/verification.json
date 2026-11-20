@@ -1,0 +1,29 @@
+{
+  "build": "2025.33230",
+  "shader_errors": "",
+  "native_preview_pixels": [
+    1280,
+    720
+  ],
+  "native_still_save": "passed",
+  "short_export": {
+    "seconds": 5,
+    "fps": 24,
+    "frames": 120,
+    "status": "completed via studio actions"
+  },
+  "native_vs_standalone_mean_absolute_error_8bit": {
+    "whole": 0.040484302662037036,
+    "depth3": 0.04002097800925926
+  },
+  "texture_coordinate_adapter": "PNG vertical row orientation only; geometry and lighting source identical",
+  "standalone_reopen": "passed: fresh TouchDesigner process, copied .toe alone in isolated directory, no source atlas present",
+  "saved_project": "Porous-Lantern.toe",
+  "project_children": [
+    "PorousLantern"
+  ],
+  "atlas_embedded": true,
+  "development_server_included": false,
+  "full_hero_export_via_studio": true,
+  "toe_sha256": "be30c518726b99474fc7f30a81514c38f3f4d9be3c7feadbc4e32e28eddea039"
+}
