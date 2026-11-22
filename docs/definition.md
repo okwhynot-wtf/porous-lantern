@@ -1,10 +1,30 @@
 # Exact definition
 
-Porous Lantern is the compact attractor of eight contracting similarities in three-dimensional Euclidean space. This edition fixes the original **L3-30** recipe: a regular octagon, a reference chord spanning three edges, a 30° roll and contraction ratio \(r=\sqrt2-1\). These parameters stay the same at every generation.
+Porous Lantern is a mirror-symmetric pair of spatial fractal pieces meeting on one plane. Its mathematical set is D, defined below. The solid appearance in the images comes from a finite rendering envelope; the exact set has zero three-dimensional volume.
 
-The mathematical object has zero ordinary three-dimensional volume. The images give it a finite surface envelope so its folds and passages can be seen. Geometry and display thickness are separate choices.
+## The displayed set
 
-## The eight maps
+Let K be the auxiliary generating motif defined by the eight similarities in the next section. Write
+
+\[
+P=\{x=y\},\qquad
+\ell(x,y,z)=\frac{x-y}{\sqrt2},\qquad
+H_+=\{\ell\geq0\},\quad H_-=\{\ell\leq0\}.
+\]
+
+The two retained pieces and their union are
+
+\[
+D_+=f_0(K)\cap H_+,\qquad
+D_-=f_1(K)\cap H_-,\qquad
+\boxed{D=D_+\cup D_-}.
+\]
+
+**D is the artwork shown in the gallery and film.** K supplies its repeated detail and is a mathematical ingredient in this definition. The equation for K should not be read as a whole-object replacement rule for D.
+
+Reflection \(S(x,y,z)=(y,x,z)\) exchanges the two retained pieces. Their traces on P match exactly, and they meet only on that plane. The [interface account](joins.md) explains this construction visually; [results](results.md) distinguish the proved properties from open questions.
+
+## The generating similarities
 
 Use a unit regular octagon in the horizontal plane:
 
@@ -12,100 +32,68 @@ Use a unit regular octagon in the horizontal plane:
 v_i=(\cos(i\pi/4),\sin(i\pi/4),0),\qquad G=R_z(\pi/4).
 \]
 
-Indices are taken modulo eight. Put
+Indices are modulo eight. Set
 
 \[
-A=v_0,\quad B=v_3,\quad U=v_0,\quad V=v_1,
-\qquad r=\frac{|V-U|}{|B-A|}=\sqrt2-1.
+a=v_0,\quad b=v_3,\quad u=v_0,\quad v=v_1,
+\qquad r=\frac{|v-u|}{|b-a|}=\sqrt2-1.
 \]
 
-For a vector \(d\) with nonzero horizontal projection, form the right-handed orthonormal frame
+For a vector d with nonzero horizontal projection, define a right-handed orthonormal frame
 
 \[
-x=\frac{d}{|d|},\qquad
-y=\frac{e_z\times x}{|e_z\times x|},\qquad
-F(d)=[\,x\;y\;x\times y\,].
+e_1=\frac{d}{|d|},\qquad
+e_2=\frac{e_z\times e_1}{|e_z\times e_1|},\qquad
+F(d)=[\,e_1\;e_2\;e_1\times e_2\,].
 \]
 
-With the usual right-handed rotation
+With the standard right-handed rotation \(R_x\), put
 
 \[
-R_x(\beta)=
-\begin{pmatrix}
-1&0&0\\
-0&\cos\beta&-\sin\beta\\
-0&\sin\beta&\cos\beta
-\end{pmatrix},\qquad \beta=\pi/6,
-\]
-
-define
-
-\[
-Q_0=F(V-U)R_x(\pi/6)F(B-A)^T,
+Q_0=F(v-u)R_x(\pi/6)F(b-a)^T,
 \qquad
-t_0=\frac{U+V}{2}-rQ_0\frac{A+B}{2}.
+t_0=\frac{u+v}{2}-rQ_0\frac{a+b}{2}.
 \]
 
-The seed similarity and its seven rotated companions are
+The maps are
 
 \[
 f_0(x)=rQ_0x+t_0,\qquad
-f_i=G^if_0G^{-i}.
+f_i=G^if_0G^{-i},\qquad 0\leq i<8.
 \]
 
-There is a unique nonempty compact set \(K\) satisfying
-
-\[
-K=\bigcup_{i=0}^{7}f_i(K).
-\]
-
-This is the original Porous Lantern. The general existence and uniqueness statement is the standard contraction-IFS theorem; see [related work](related.md).
-
-Each map is a proper similarity and aligns two retained vertices:
+The 30-degree roll is about the reference chord direction before alignment. It is not a turn about the global vertical axis. The maps align the retained vertices:
 
 \[
 f_i(v_i)=v_i,\qquad f_i(v_{i+3})=v_{i+1}.
 \]
 
-The 30° roll is about the reference chord's direction before alignment. It is not a 30° turn about the global vertical axis. This distinction matters when rebuilding the object in another program.
-
-## Addresses and scale
-
-A word is read from the outside inward: \(f_{04}=f_0\circ f_4\). For a word \(w=i_1\cdots i_n\),
+There is a unique nonempty compact generating set
 
 \[
-f_w(x)=t_w+r^nQ_wx,
-\qquad f_w(K)\subseteq K.
+K=\bigcup_{i=0}^{7}f_i(K).
 \]
 
-Every such subset is an exact scaled and rotated copy of the whole. Overlap with neighbouring copies does not invalidate this identity. It can affect which copied openings remain clear in the entire parent object.
+Existence and uniqueness follow from the contraction-IFS theorem. The construction uses the fixed L3-30 parameter values throughout: chord span three, 30-degree roll and ratio \(r=\sqrt2-1\). See [related work](related.md) for the mathematical context.
 
-One generation reduces lengths by about 0.414214 and increases the camera magnification needed to recover the parent size by \(1+\sqrt2\approx2.414214\). Three generations correspond to \(7+5\sqrt2\approx14.071068\) times magnification.
+## Addresses and retained detail
 
-The fixed point of \(f_0\) is \(v_0\). A continuous camera that follows its repeated address can use
+Words are read from the outside inward: \(f_{04}=f_0\circ f_4\). A word w of length n gives
 
 \[
-F_d(x)=v_0+r^dQ_0^d(x-v_0),
+f_w(x)=t_w+r^nQ_wx.
 \]
 
-where the fractional rotation uses a fixed axis-angle logarithm of \(Q_0\). At integer \(d=n\), this is exactly \(f_0^n\). At intermediate values it is a smooth camera path, not an assertion that the fractal is invariant under every fractional scale.
+The complete motif \(f_{00}(K)\) lies inside D, strictly on the positive side of the interface. All its descendants \(f_{00w}(K)\) lie in D too. Thus the visible detail has exact recursive structure at arbitrarily small scales.
 
-## Mathematical and display coordinates
+One generation scales lengths by approximately 0.414214; the corresponding magnification is \(1+\sqrt2\approx2.414214\). These statements concern the retained generating motifs. A finite set of similarities which reconstructs the complete D from copies of D has not been established.
 
-All distances in [the results](results.md) refer to the unit octagon above. The frozen rendering export multiplies all coordinates by the positive constant
+## Coordinates and numerical export
+
+Mathematical distances use the unit octagon above. The renderer may apply the uniform display factor
 
 \[
 \lambda\approx1.7579924420999498.
 \]
 
-This uniform display normalization changes neither symmetry nor topology. The authoritative definition is the exact formula above; the matrices in [the numerical reference](../math/data/reference.json) are a floating-point export of it. The [verifier](../math/verify.py) reconstructs the maps from rational numbers and radicals independently of that export.
-
-## Relation to the planar construction
-
-As a comparison only, setting the roll to zero gives \(Q_0=G^{-1}\). Rotational invariance then reduces the set equation to eight homotheties \(x\mapsto rx+G^it_0\), with
-
-\[
-t_0=(1/\sqrt2,\,1-1/\sqrt2,\,0).
-\]
-
-This connects the recipe to the established planar eight-gasket family. The published object here keeps the 30° roll and is nonplanar. See [the prior-art comparison](related.md); no historical priority is claimed.
+Uniform scaling preserves the clipping plane, reflection symmetry and topology. The authoritative definition is the exact formula for D and its generating maps. [reference.json](../math/data/reference.json) stores a numerical export of the maps; [exact.py](../math/exact.py) reconstructs them independently from rational constants and radicals.

@@ -1,78 +1,65 @@
-# Reproduce the mathematics
+# Reproduce the geometry
 
-The mathematical package is standalone and uses the fixed original L3-30 recipe. All required source and certificate data are included in this repository.
+The displayed geometry is the two-piece set D in the [definition](definition.md). Its construction has two stages: generate the recursive motif K, then retain the prescribed half-space of each placed piece. Rendering adds a finite surface envelope after that geometric definition.
 
-From the repository root, using Python 3.12 or later:
+## Run the mathematical checks
+
+From the repository root, with the project's Python requirements installed:
 
 ```sh
 python -m pip install -r requirements.txt
-python math/verify.py
-python math/generate.py --depth 5 --output .build/lantern.csv
-```
-
-Alternatively, with `uv` installed:
-
-```sh
-uv run --isolated --python 3.12 --with-requirements requirements.txt python math/verify.py
-uv run --isolated --python 3.12 --with-requirements requirements.txt python math/generate.py --depth 5 --output .build/lantern.csv
-```
-
-See [media and TouchDesigner](media.md) for rendering dependencies, project controls and film export.
-
-## Reproduce the new join findings
-
-The separate [join study package](../research/join-study/README.md) certifies
-the unique geometry removed by trimming and the complete miniature that
-survives. It reads the preserved exact maps and writes its own receipt:
-
-```sh
+python math/verify.py --receipt .build/verification.json
 python research/join-study/source/certify_interface.py
 ```
 
-The [join account](joins.md) supplies the analytic mirror, dimension and
-attractor-uniqueness arguments. The original verifier below continues to
-describe the untrimmed Lantern.
+[exact.py](../math/exact.py) reconstructs the generating similarities from rational constants and radicals using 60-decimal-digit outward interval arithmetic. The generating-map checks establish contraction, the invariant ball, spatial extent, mirror identities, complete separation covers and selected clear axes.
 
-## What the verifier checks
+The interface check establishes the premises used specifically for D: generating coordinates, a connected motif crossing the shared plane, and a complete word-00 motif whose enclosing ball lies strictly inside the retained half-space. The [results](results.md) give the analytic arguments and identify which conclusions concern the displayed set.
 
-[exact.py](../math/exact.py) reconstructs the eight maps from rational constants, \(\sqrt2\), \(\sqrt3\), and the exact chord-frame formula. It uses outward interval arithmetic at 60 decimal digits, independently of the decimal rendering matrices.
+The source inputs include [the numerical reference](../math/data/reference.json) and [finite certificate covers](../math/data/covers.json). Prefix-free, complete covers bound every address of the infinite generating set. They are not nearest-neighbour tests on sampled points.
 
-[verify.py](../math/verify.py) then checks:
+The checks emit receipts with source/input hashes, arithmetic precision and numerical diagnostics. The readable decimal diagnostics are not certified interval endpoints; the internal outward interval comparisons carry the strict inequalities. Some identities require the analytic chord-frame argument: an interval which merely contains zero is not a proof of exact equality.
 
-- Strict contraction, the invariant ball, a nonplanarity witness, and \(8r^3<1\).
-- Agreement of the frozen rendering export with the independently reconstructed formula to better than \(10^{-13}\).
-- The seven required whole-attractor tube clearances and all three non-neighbour separation classes.
-- Prefix-free, complete address covers for every separation claim.
-- Opposite signs across a mirror plane and distance from the prescribed join for the additional-contact argument.
-- Four explicit attractor points inside specified nominal descendant tubes.
-- Endpoint, orthogonality and mirror-identity residuals as implementation checks supporting the analytic derivations.
+## A numerical point sample of D
 
-The certificate inputs in [covers.json](../math/data/covers.json) are finite word lists, not point-cloud approximations. The verifier checks their completeness and recomputes every relevant centre and radius. A point search may nominate a useful cover; the finite complete cover and strict inequalities establish the final bound for the infinite set.
+This Python example uses the included mathematical package. It samples K, places the positive-side piece, applies its half-space condition and reflects the retained sample to produce the other half:
 
-The output [verification.json](../math/data/verification.json) records the precision, environment, numerical diagnostics and SHA-256 hashes of its source and input files. To preserve the distributed receipt when rerunning:
+```python
+from pathlib import Path
+import sys
+import numpy as np
 
-```sh
-python math/verify.py --receipt .build/verification.json
+sys.path.insert(0, "math")
+from model import R, Q, T, points
+
+motif = points(5)
+placed = R * motif @ Q[0].T + T[0]
+positive = placed[placed[:, 0] >= placed[:, 1]]
+negative = positive[:, [1, 0, 2]]
+lantern = np.concatenate([positive, negative])
+
+Path(".build").mkdir(exist_ok=True)
+np.savetxt(".build/porous-lantern.csv", lantern,
+           delimiter=",", header="x,y,z", comments="")
 ```
 
-Rounded diagnostic numbers in that JSON are for readability; they are not certified decimal interval endpoints. Pass/fail decisions use interval comparisons internally. The analytic implications—connectedness, symmetry, the mirror-plane contact argument, and winding—are given in [results](results.md).
+Coordinates use the unit octagon. Floating arithmetic approximates the exact points and plane test. This sample is useful for inspection and import into other programs; it does not certify the seam or connectivity.
 
-## Exporting a finite point set
+For the complete depth-n generating sample, the geometric Hausdorff bound is \((27/20+1)r^n\). That bound **does not automatically transfer through the half-space filtering**: samples close to the clipping boundary can be discarded even when nearby points of the exact retained set remain. Coverage of the displayed sample needs its own analysis.
 
-[generate.py](../math/generate.py) exports a deterministic CSV of \(8^n\) points at depth \(n\). It starts at the retained vertex \(v_0\), rather than at an arbitrary seed, so each exact point is in the attractor. Floating-point arithmetic approximates its coordinates.
+## Render and record
 
-For the exact finite set, the Hausdorff error is at most
+The [media page](media.md) describes the current stills, film and TouchDesigner project. Rendering evaluates the same retained pieces; shading and envelope thickness affect their appearance without changing the defining half-spaces.
 
-\[
-(27/20+1)r^n.
-\]
+The film pipeline records a fixed sequence of cooked TouchDesigner TOP frames. Its media receipt records the export settings and output metadata. Mathematical certification is independent of the raster output: neither successful movie encoding nor a continuous-looking surface establishes topology.
 
-Every level-\(n\) copy has a point of the export in it, and its other points are within this bound because the original set lies in the radius-\(27/20\) ball and \(|v_0|=1\). Numerical coordinate error is additional to this geometric bound.
+## Build the website
 
-Depth 5 gives 32,768 points; depth 7 gives 2,097,152. The default coordinates use the unit octagon. Add `--display-units` to apply the frozen uniform scale used by the renderer. A point set is useful for inspection and import into other tools; it does not replace the interval certificates.
+The website is generated from these documents and the current media manifest:
 
-## Scope of verification
+```sh
+python -m pip install -r site-requirements.txt
+python scripts/build_site.py
+```
 
-The release audit reran the interval checks and exported a depth-five CSV in a separate temporary copy of the mathematical package. The successful receipt was produced with Python 3.14, mpmath 1.3.0 and NumPy 2.3.5. The definitions and proof arguments were reviewed alongside those calculations.
-
-This workflow does not compute the exact Hausdorff dimension, classify every contact, or certify pixels of the finite rendered surface. It verifies the specific mathematical statements enumerated above. See [related work](related.md) for the literature context and the limits of the originality claim.
+The build checks local pages, image paths and internal links. [Provenance](provenance.md) records authorship, assistance and reuse terms.

@@ -1,9 +1,15 @@
-// Fixed L3-30 geometry. Generated from the original anatomy renderer.
-vec3 uCentre,uRight,uUp,uSight;
-float uFrame,uAspect,uExposure,uScale;
-uniform float uWeight;
-uniform vec4 uView,uStill;
-const int uNeutral=0,uMask=255,uMode=0;const float uThickness=1.;
+#define FIELD sTD2DInputs[0]
+uniform vec4 uTile;
+uniform vec3 uCentre, uRight, uUp, uSight;
+uniform vec4 uSettings;
+#define uFrame uSettings.x
+#define uAspect uSettings.y
+#define uExposure uSettings.z
+#define uScale uSettings.w
+const float uWeight=1.;
+const int uNeutral=0, uMask=3, uMode=1;
+const float uThickness=1.;
+const int uCut=1, uSecond=-1;
 const float extent=2.22;
 const int COUNT=8; const float ratio=0.41421356237310;
 const mat3 Q[COUNT]=mat3[COUNT](mat3(vec3(0.659739608441,-0.726726906549,-0.191341716183),vec3(0.592752310333,0.659739608441,-0.461939766256),vec3(0.461939766256,0.191341716183,0.866025403784)),mat3(vec3(0.726726906549,-0.659739608441,0.191341716183),vec3(0.659739608441,0.592752310333,-0.461939766256),vec3(0.191341716183,0.461939766256,0.866025403784)),mat3(vec3(0.659739608441,-0.592752310333,0.461939766256),vec3(0.726726906549,0.659739608441,-0.191341716183),vec3(-0.191341716183,0.461939766256,0.866025403784)),mat3(vec3(0.592752310333,-0.659739608441,0.461939766256),vec3(0.659739608441,0.726726906549,0.191341716183),vec3(-0.461939766256,0.191341716183,0.866025403784)),mat3(vec3(0.659739608441,-0.726726906549,0.191341716183),vec3(0.592752310333,0.659739608441,0.461939766256),vec3(-0.461939766256,-0.191341716183,0.866025403784)),mat3(vec3(0.726726906549,-0.659739608441,-0.191341716183),vec3(0.659739608441,0.592752310333,0.461939766256),vec3(-0.191341716183,-0.461939766256,0.866025403784)),mat3(vec3(0.659739608441,-0.592752310333,-0.461939766256),vec3(0.726726906549,0.659739608441,0.191341716183),vec3(0.191341716183,-0.461939766256,0.866025403784)),mat3(vec3(0.592752310333,-0.659739608441,-0.461939766256),vec3(0.659739608441,0.726726906549,-0.191341716183),vec3(0.461939766256,-0.191341716183,0.866025403784)));
@@ -16,8 +22,8 @@ vec2 field(vec3 pos) {
     vec2 b = vec2(mod(next,12.),floor(next/12.))*96.;
     vec2 uv = g.xy+.5;
     vec2 atlas = vec2(1152.,768.);
-    vec2 value = mix(textureLod(FIELD, (a+uv)/atlas, 0.).rg,
-                     textureLod(FIELD, (b+uv)/atlas, 0.).rg, fract(g.z));
+    vec2 value = mix(textureLod(FIELD, vec2(((a+uv)/atlas).x, 1.-((a+uv)/atlas).y), 0.).rg,
+                     textureLod(FIELD, vec2(((b+uv)/atlas).x, 1.-((b+uv)/atlas).y), 0.).rg, fract(g.z));
     return vec2(value.r*.8, value.g);
 }
 
@@ -51,6 +57,13 @@ void traceCopy(vec3 origin, vec3 ray, vec3 centre, mat3 rotation, float scale,
         if (travel>=end) break;
         vec3 p = from + direction*travel;
         float d = field(p).x-skin;
+        if(uCut!=0 && address.x<2){
+            vec3 world=centre+scale*rotation*p;
+            float signCut=address.x==0 ? -1. : 1.;
+            if(uCut==2)signCut=-signCut;
+            float cut=signCut*(world.x-world.y)*.7071067811865475/scale;
+            d=max(d,cut);
+        }
         if (d<.0018) {
             hit = Hit(start+scale*travel,p,rotation,scale,vec3(0),address);
             return;
@@ -81,7 +94,7 @@ float shadow(vec3 pos, vec3 light) {
 
 Hit traceScene(vec3 origin,vec3 ray,float skin){Hit hit=Hit(16.,vec3(0),mat3(1),1.,vec3(0),ivec4(0));
 for(int i=0;i<COUNT;++i){if((uMask & (1<<i))==0)continue;vec3 p1=T[i];mat3 q1=Q[i];float r1=ratio;vec3 delta=p1-origin;float mid=dot(delta,ray);float rad=2.40*r1;if(mid+rad<0. || mid-rad>hit.depth || dot(delta,delta)-mid*mid>rad*rad)continue;
-for(int j=0;j<COUNT;++j){vec3 p2=p1+r1*q1*T[j];mat3 q2=q1*Q[j];float r2=r1*ratio;vec3 delta=p2-origin;float mid=dot(delta,ray);float rad=2.40*r2;if(mid+rad<0. || mid-rad>hit.depth || dot(delta,delta)-mid*mid>rad*rad)continue;
+for(int j=0;j<COUNT;++j){if(uSecond>=0 && j!=uSecond)continue;vec3 p2=p1+r1*q1*T[j];mat3 q2=q1*Q[j];float r2=r1*ratio;vec3 delta=p2-origin;float mid=dot(delta,ray);float rad=2.40*r2;if(mid+rad<0. || mid-rad>hit.depth || dot(delta,delta)-mid*mid>rad*rad)continue;
 for(int k=0;k<COUNT;++k){vec3 p3=p2+r2*q2*T[k];mat3 q3=q2*Q[k];float r3=r2*ratio;vec3 delta=p3-origin;float mid=dot(delta,ray);float rad=2.40*r3;if(mid+rad<0. || mid-rad>hit.depth || dot(delta,delta)-mid*mid>rad*rad)continue;
 for(int l=0;l<COUNT;++l){vec3 p4=p3+r3*q3*T[l];mat3 q4=q3*Q[l];float r4=r3*ratio;vec3 delta=p4-origin;float mid=dot(delta,ray);float rad=2.40*r4;if(mid+rad<0. || mid-rad>hit.depth || dot(delta,delta)-mid*mid>rad*rad)continue;
 for(int m=0;m<COUNT;++m){vec3 p5=p4+r4*q4*T[m];mat3 q5=q4*Q[m];float r5=r4*ratio;vec3 delta=p5-origin;float mid=dot(delta,ray);float rad=2.40*r5;if(mid+rad<0. || mid-rad>hit.depth || dot(delta,delta)-mid*mid>rad*rad)continue;
@@ -89,35 +102,7 @@ for(int n=0;n<COUNT;++n){vec3 p6=p5+r5*q5*T[n];mat3 q6=q5*Q[n];float r6=r5*ratio
 traceCopy(origin,ray,p6,q6,r6,ivec4(i,j,k,l),skin,hit);}}}}}}return hit;}
 // Surface, directional density shading, soft shadow, satin highlights and
 // tone mapping adapted directly from sixfold/sculpture.frag's metal study.
-
-mat3 rotationAxis(vec3 a,float t){
- float c=cos(t),s=sin(t),d=1.-c;
- return mat3(c+a.x*a.x*d,a.y*a.x*d+a.z*s,a.z*a.x*d-a.y*s,
- a.x*a.y*d-a.z*s,c+a.y*a.y*d,a.z*a.y*d+a.x*s,
- a.x*a.z*d+a.y*s,a.y*a.z*d-a.x*s,c+a.z*a.z*d);
-}
-void camera(){
- float p=fract(uView.x),depth=0.,az=-58.,el=34.,frame=4.65;
- // 48-second closed camera journey: reveal, three-generation descent, return.
- // Smooth periodic depth returns along the same similarity path; no geometry replacement.
- if(uView.y<.5){
-   float travel=smoothstep(.25,.38,p)*(1.-smoothstep(.90,1.,p));
-   depth=3.*pow(sin(3.141592653589793*clamp((p-.25)/.75,0.,1.)),2.);
-   az=-58.+100.*pow(sin(3.141592653589793*clamp(p/.25,0.,1.)),2.);
-   el=34.+28.*pow(sin(3.141592653589793*clamp(p/.25,0.,1.)),2.);
- }else if(uView.y<1.5){az=-58.+360.*p;el=34.+12.*sin(6.28318530718*p);}
- else{depth=uStill.x;az=uStill.y;el=uStill.z;frame=uStill.w;}
- mat3 turn=rotationAxis(vec3(-0.40557102089336,0.40557102089336,-0.81916072539095),0.93632438080912*depth);
- float scale=pow(ratio,depth);vec3 pivot=vec3(1.75799244209995,0.00000000000000,0.00000000000000);
- uCentre=pivot-scale*turn*pivot;
- az=radians(az);el=radians(el);
- uSight=turn*vec3(cos(az)*cos(el),sin(az)*cos(el),sin(el));
- uRight=turn*vec3(-sin(az),cos(az),0.);uUp=cross(uSight,uRight);
- uFrame=frame*scale;uScale=scale;uAspect=uView.w;uExposure=uView.z;
-}
-
-vec3 render(vec2 uv){
-camera();
+vec4 render(vec2 uv){
     vec2 plane=(uv-.5)*vec2(uAspect,1.);
     vec3 ray=-uSight;
     vec3 origin=uCentre+uFrame*(uRight*plane.x+uUp*plane.y)+uSight*6.;
@@ -125,7 +110,7 @@ camera();
     Hit hit=traceScene(origin,ray,skin);
     vec2 vignette=(uv-vec2(.44,.54))*vec2(1.22,1.);
     vec3 bg=mix(vec3(.008,.014,.023),vec3(.066,.108,.122),exp(-6.5*dot(vignette,vignette)));
-    if(hit.depth>15.){return bg*uWeight;}
+    if(hit.depth>15.){return vec4(bg,1.);}
     vec3 point=origin+hit.depth*ray;
     vec3 copper=vec3(.94,.40,.105),teal=vec3(.026,.46,.41);
     vec3 steel=vec3(.22,.33,.39);
@@ -136,8 +121,15 @@ camera();
     if(4==4)albedo=mix(albedo,material[hit.address.w],.04+.30*smoothstep(2.40,3.,descent));
     if(uNeutral==1)albedo=vec3(.55,.59,.60);
     vec3 diagnostic[8]=vec3[8](vec3(0.94,0.4,0.105),vec3(0.04,0.57,0.49),vec3(0.32,0.47,0.83),vec3(0.78,0.3,0.42),vec3(0.72,0.63,0.24),vec3(0.43,0.66,0.3),vec3(0.58,0.35,0.74),vec3(0.2,0.62,0.75));
-if(uMode==1)albedo=diagnostic[hit.address.x];if(uMode==2)albedo=vec3(.56,.61,.60);
-vec3 n=hit.rotation*normalAt(hit.local);
+if(uMode==1)albedo=hit.address.x<2 ? diagnostic[hit.address.x] : vec3(.38,.43,.46);if(uMode==2)albedo=vec3(.56,.61,.60);
+if(uMode==3)albedo=point.x>=point.y ? vec3(.94,.40,.105) : vec3(.04,.57,.49);
+    vec3 n=hit.rotation*normalAt(hit.local);
+    if(uCut!=0 && hit.address.x<2){
+        float signCut=hit.address.x==0 ? -1. : 1.;
+        if(uCut==2)signCut=-signCut;
+        float cut=signCut*(point.x-point.y)*.7071067811865475/hit.scale;
+        if(cut>field(hit.local).x-skin) n=signCut*vec3(.7071067811865475,-.7071067811865475,0.);
+    }
     vec3 key=normalize(-.75*uRight+.94*uUp+.26*uSight);
     vec3 fill=normalize(.80*uRight+.28*uUp+.17*uSight);
     vec3 loc=point,keyLocal=key;
@@ -164,6 +156,8 @@ vec3 n=hit.rotation*normalAt(hit.local);
     float relief=dot(point-uCentre,uSight)/max(uScale,.26);
     reflected*=uExposure*clamp(.90+.26*relief,.50,1.35);
     vec3 color=pow(clamp(1.-exp(-1.35*reflected),0.,1.),vec3(.4545));
-    return color*uWeight;
+    return vec4(color,1.);
 }
 
+layout(location=0) out vec4 fragColor;
+void main(){fragColor=TDOutputSwizzle(render(uTile.xy+vUV.st*uTile.zw));}

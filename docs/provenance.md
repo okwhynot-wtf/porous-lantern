@@ -1,56 +1,23 @@
 # Provenance and reuse
 
-Porous Lantern is an independent project by **okwhynot-wtf**, developed through
-mathematical experiments and visual comparison. The original L3-30 object was
-selected for its eightfold symmetry, repeated openings and sculptural appearance.
-This publication preserves that recipe and records the evidence for its properties.
-The later [trimmed join study](joins.md) is the preferred visual direction,
-documented as a local derived variant with its own evidence and limitations.
+Porous Lantern is an independent project by **okwhynot-wtf**. The artwork is the mirrored two-piece set D described in the [definition](definition.md), presented through six still compositions, a silent film and a TouchDesigner visualization.
+
+Its visual language draws on the artist's [Sixfold project](https://github.com/okwhynot-wtf/sixfold): metallic colour, directional light and close views of recursive detail. The website follows the same restrained publication style.
 
 ## Assistance and review
 
-OpenAI GPT models, through ChatGPT and Codex, provided substantial assistance
-with construction searches, mathematical arguments, interval verification,
-rendering and TouchDesigner code, literature research, and publication writing.
-The project owner directed the work and selected its visual direction.
+OpenAI GPT models, through ChatGPT and Codex, provided substantial assistance with mathematical exploration, proof arguments, interval verification, rendering and TouchDesigner code, literature research and publication writing. The project owner directed the work and selected the visual form.
 
-Computational receipts record specific checks, rather than independent peer
-review. The proof arguments await independent mathematical review. The
-[related-work page](related.md) gives the closest identified precedents and
-leaves historical originality open. Corrections and precise comparisons are
-welcome through the repository's issues.
+Computational receipts record specific checks. They are not independent peer review. The mathematical arguments await external review, and historical priority remains unresolved. Precise comparisons and corrections are welcome through the [repository](https://github.com/okwhynot-wtf/porous-lantern).
 
-## This edition
+## Geometry and presentation
 
-The publication was prepared on 20 November 2026, Australia/Sydney. It contains
-the unchanged original eight-map Lantern, six still compositions, one silent
-film, the TouchDesigner project and renderer, and a standalone mathematical
-package. Rendering geometry and lighting derive from the project's earlier
-[Sixfold visualisation](https://github.com/okwhynot-wtf/sixfold), also by
-okwhynot-wtf. The website follows that publication's visual style.
+The [definition](definition.md), [results](results.md), [related work](related.md) and [reproduction instructions](reproduce.md) describe the published geometry and the scope of its evidence. The generating equations, half-space conditions and finite rendering envelope are distinguished throughout.
 
-The definition, results, related work and reproduction instructions are the
-current account. The original decimal recipe is preserved in
-[reference.json](../math/data/reference.json), while the verifier reconstructs
-its maps independently from exact constants. Later revisions should identify
-changes to either the mathematics or its visual presentation.
-
-## The join update
-
-The 20 November 2026 join update adds a preferred trimmed interface, comparison
-images, exact exclusion and retention certificates, and an explanation of
-contained self-similarity versus a whole-object replacement rule. The original
-L3-30 mathematics, original six stills, film and TouchDesigner project are
-preserved. The update does not claim a complete construction with all joins
-trimmed, a smooth seam, or connectedness after clipping.
+Changes to cameras, lighting or movie encoding do not imply a change to the exact set. Changes to its maps or retained regions should be documented as changes to the geometry. The media manifests and computational receipts make those distinctions reviewable.
 
 ## Credit and licences
 
-Attribute the work to **okwhynot-wtf**, link to
-[Porous Lantern](https://github.com/okwhynot-wtf/porous-lantern), and identify
-changes. Code and original certificate data use the [MIT licence](../LICENSE).
-Writing, stills and films use [CC BY 4.0](../CONTENT-LICENSE.md). Cited papers
-and third-party software retain their own terms.
+Attribute the work to **okwhynot-wtf**, link to [Porous Lantern](https://github.com/okwhynot-wtf/porous-lantern), and identify changes. Code and certificate data use the [MIT licence](../LICENSE). Writing, stills and films use [CC BY 4.0](../CONTENT-LICENSE.md). Cited papers and third-party software retain their own terms.
 
-[CITATION.cff](../CITATION.cff) records the project citation. This initial
-publication has no assigned DOI.
+[CITATION.cff](../CITATION.cff) supplies the project citation. No project DOI has been assigned.

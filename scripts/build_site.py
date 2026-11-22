@@ -15,7 +15,7 @@ OUTPUT = ROOT / "_site"
 REPOSITORY = "https://github.com/okwhynot-wtf/porous-lantern"
 SITE_URL = "https://okwhynot-wtf.github.io/porous-lantern/"
 PAGES = [
-    ("joins", "The trimmed join"),
+    ("joins", "Interface"),
     ("definition", "Definition"),
     ("results", "Results & evidence"),
     ("related", "Published relatives"),
@@ -159,13 +159,51 @@ def check_output():
     return len(pages)
 
 
+def publish_assets(media):
+    """Copy only the current edition's named assets into a clean output tree."""
+    asset_paths = {"assets/style.css", "assets/site.js", "assets/math.js"}
+    for still in media["stills"]:
+        slug = still["slug"]
+        if not re.fullmatch(r"[a-z0-9-]+", slug):
+            raise ValueError(f"Invalid asset name: {slug}")
+        asset_paths.add(f"assets/{slug}.jpg")
+    for value in (media["film"]["url"], media["film"]["poster"]):
+        url = urlsplit(value)
+        if url.scheme or url.netloc:
+            if url.scheme != "https" or not url.netloc:
+                raise ValueError(f"Media URL must be local or HTTPS: {value}")
+            continue
+        asset_paths.add(unquote(url.path))
+
+    copies = []
+    asset_root = (ROOT / "site/assets").resolve()
+    for relative in sorted(asset_paths):
+        source = (ROOT / "site" / relative).resolve()
+        if not source.is_relative_to(asset_root) or not source.is_file() or not source.stat().st_size:
+            raise ValueError(f"Missing, empty or invalid publication asset: {relative}")
+        copies.append((source, source.relative_to(ROOT / "site")))
+
+    # OUTPUT is generated content only. Resolve and verify its exact location
+    # before removing stale files, including assets from previous editions.
+    expected = ROOT.resolve() / "_site"
+    if OUTPUT.is_symlink() or OUTPUT.resolve() != expected:
+        raise ValueError("Refusing to clean an output directory outside the repository's _site")
+    if OUTPUT.exists():
+        shutil.rmtree(OUTPUT)
+    OUTPUT.mkdir()
+    for source, relative in copies:
+        destination = OUTPUT / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+    return {relative.as_posix() for _, relative in copies}
+
+
 def main():
-    OUTPUT.mkdir(exist_ok=True)
-    shutil.copytree(ROOT / "site/assets", OUTPUT / "assets", dirs_exist_ok=True)
-    (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
     media = json.loads((ROOT / "site/media.json").read_text(encoding="utf-8"))
     if len(media["stills"]) != 6:
         raise ValueError("This edition has six stills")
+    published_assets = publish_assets(media)
+    (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
     film_url = html.escape(media["film"].get("download_url", media["film"]["url"]), quote=True)
     home = substitute((ROOT / "site/templates/home.html").read_text(encoding="utf-8"), {
         "hero_film": film_markup(media["film"]),
@@ -174,16 +212,18 @@ def main():
         "preview_stills": "".join(still_markup(still, preview=True) for still in media["stills"][1:4]),
     })
     (OUTPUT / "index.html").write_text(render_page(
-        "index.html", "Porous Lantern — the trimmed join",
-        "A cleaner join for Porous Lantern: matching interfaces, surviving exact fractal copies, and the original eightfold construction behind the study.",
+        "index.html", "Porous Lantern — mirrored form, fractal detail",
+        "Explore Porous Lantern: two mirrored halves meeting at a shared interface, with repeating fractal detail, still images, a silent film and reproducible mathematics.",
         home), encoding="utf-8")
     gallery = substitute((ROOT / "site/templates/gallery.html").read_text(encoding="utf-8"), {
         "gallery_stills": "".join(still_markup(still) for still in media["stills"]),
         "film_url": film_url,
+        "film_title": html.escape(media["film"].get("title", "Porous Lantern in motion")),
+        "hero_caption": html.escape(media["film"]["caption"]),
     })
     (OUTPUT / "gallery.html").write_text(render_page(
         "gallery.html", "Gallery — Porous Lantern",
-        "The preferred trimmed join study and six preserved views of the original Porous Lantern, with downloadable images and a silent film.",
+        "Six views of Porous Lantern's mirrored form, shared interface and repeating fractal detail, with downloadable images and a silent film.",
         gallery), encoding="utf-8")
     for slug, label in PAGES:
         source = ROOT / "docs" / f"{slug}.md"
@@ -208,8 +248,13 @@ def main():
             f"{slug}.html", f"{label} — Porous Lantern", f"Porous Lantern. {label}.",
             body, document=True), encoding="utf-8")
     count = check_output()
+    expected_files = published_assets | {".nojekyll", "index.html", "gallery.html"} | {f"{slug}.html" for slug, _ in PAGES}
+    actual_files = {path.relative_to(OUTPUT).as_posix() for path in OUTPUT.rglob("*") if path.is_file()}
+    if actual_files != expected_files:
+        raise ValueError("The output contains files outside the current publication allowlist")
     print(f"Built and checked {count} pages in {OUTPUT}.")
     print("All local links, anchors, media references and documentation source links resolve.")
+    print(f"Published {len(published_assets)} current assets; archived comparison assets are excluded.")
 
 
 if __name__ == "__main__":

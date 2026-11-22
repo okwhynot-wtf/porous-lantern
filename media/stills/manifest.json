@@ -1,68 +1,127 @@
 [
   {
     "name": "hero",
-    "depth": 0,
-    "az": -58,
-    "elev": 34,
-    "frame": 4.2,
     "width": 1920,
     "height": 1080,
-    "samples": 4,
-    "sha256": "ce66aa6cc2ef542dae6e995879174bd87f9fba9adb3ef4ab1275b1976d027288"
+    "samples": 2,
+    "camera": {
+      "az": 45.0,
+      "elev": 50.0,
+      "centre": [
+        0.5,
+        0.5,
+        0.15
+      ],
+      "frame": 1.25
+    },
+    "sha256": "20f20be227245e744beebb5321479976f2a417495346552076cd10edc119dc4e",
+    "renderer": "TouchDesigner GLSL TOP"
   },
   {
     "name": "front",
-    "depth": 0,
-    "az": -90,
-    "elev": 90,
-    "frame": 4.4,
     "width": 1920,
     "height": 1440,
-    "samples": 4,
-    "sha256": "5d63a2febe146ce13c4e8ea94e722402be0b289054b9e979914573ee32d0e419"
+    "samples": 2,
+    "camera": {
+      "az": 45.0,
+      "elev": 50.0,
+      "centre": [
+        0.5,
+        0.5,
+        0.15
+      ],
+      "frame": 1.5
+    },
+    "sha256": "4af9e5e5fe1dbb4cd75b90c2623a2e80760ce8a56d5d82aee30a6eea6edb05cb",
+    "renderer": "TouchDesigner GLSL TOP"
   },
   {
     "name": "side",
-    "depth": 0,
-    "az": -22,
-    "elev": 12,
-    "frame": 3.8,
     "width": 1920,
     "height": 1440,
-    "samples": 4,
-    "sha256": "61da989407c96bc7357f25191bf5954ab6c80963166dd06625a552fa799dc3dd"
+    "samples": 2,
+    "camera": {
+      "az": 12.0,
+      "elev": 30.0,
+      "centre": [
+        0.5,
+        0.5,
+        0.15
+      ],
+      "frame": 1.4
+    },
+    "sha256": "4c723c3ccecd8e572a27105ecfba67d0a9c3508eb13253349a987b77db1019eb",
+    "renderer": "TouchDesigner GLSL TOP"
   },
   {
     "name": "back",
-    "depth": 0,
-    "az": 122,
-    "elev": -34,
-    "frame": 4.2,
     "width": 1920,
     "height": 1440,
-    "samples": 4,
-    "sha256": "c3d3e03863b83417f7633f27c37d07c30bde1aeef5be2e58e4c702e2aad645e1"
+    "samples": 2,
+    "camera": {
+      "az": 225.0,
+      "elev": -40.0,
+      "centre": [
+        0.5,
+        0.5,
+        0.15
+      ],
+      "frame": 1.4
+    },
+    "sha256": "ae5a2ddfb5bf7d9e4731e5aa046f5f31984464b9d373df03608a1c58f0788167",
+    "renderer": "TouchDesigner GLSL TOP"
   },
   {
     "name": "detail",
-    "depth": 1,
-    "az": -58,
-    "elev": 34,
-    "frame": 4.4,
     "width": 1920,
     "height": 1440,
-    "samples": 4,
-    "sha256": "c10d55df00493d25d8f3a29e4998247ab9fa19d9dffc02a0ae002223b8cbfc7e"
+    "samples": 2,
+    "camera": {
+      "az": 45.0,
+      "elev": 50.0,
+      "centre": [
+        0.4565946,
+        0.4565946,
+        0.22288254
+      ],
+      "frame": 0.85
+    },
+    "sha256": "1a55815d1b225ccea076c03bd27e36335adb6f8f6852a38d56208fb1d2b2b8aa",
+    "renderer": "TouchDesigner GLSL TOP"
   },
   {
     "name": "zoom",
-    "depth": 2,
-    "az": -58,
-    "elev": 34,
-    "frame": 4.4,
     "width": 1920,
     "height": 1440,
-    "samples": 4,
-    "sha256": "dd75fd80f84ea51eb03506388f4ada3641c3488f4ae55e033218d66e85f2cbff"
+    "samples": 2,
+    "camera": {
+      "az": -58.0,
+      "elev": 34.0,
+      "centre": [
+        1.0143951443065615,
+        0.17080297661521282,
+        -0.007508296917429172
+      ],
+      "frame": 0.46324676318528696,
+      "turn": [
+        [
+          -0.08390104954078684,
+          0.5687360065945352,
+          0.8182297774393539
+        ],
+        [
+          -0.9955127018922085,
+          -0.08390104954078685,
+          -0.04376156141208351
+        ],
+        [
+          0.04376156141208351,
+          -0.8182297774393539,
+          0.5732233047020463
+        ]
+      ]
+    },
+    "sha256": "4f58720e8a0cc5ecc586fa42bb6ea93397f94cf394fb49038b893bf4b2934e4c",
+    "renderer": "TouchDesigner GLSL TOP"
   }
 ]

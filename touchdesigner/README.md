@@ -1,49 +1,63 @@
-# Porous Lantern in TouchDesigner
+# Porous Lantern Studio
 
-This studio uses the original **L3-30** object: eight fixed similarities, a contraction ratio of `sqrt(2)-1`, and a 30-degree chord-frame roll. Its controls change the view and exposure. The camera never changes the recipe.
+The studio renders the mirrored set D: two recursive pieces retained on opposite sides of their shared plane. Camera and exposure controls change its presentation; the geometry stays fixed.
 
-The installer creates `/project1/PorousLantern`. Its `view` TOP is the finished 1280 × 720 image, and **Motion → Open studio** opens a preview beside the controls. Save the project as `touchdesigner/Porous-Lantern.toe` so the default relative export paths match the repository layout.
+## Open and view
 
-## Viewing
+Open [Porous-Lantern.toe](Porous-Lantern.toe), or import [Porous-Lantern.tox](Porous-Lantern.tox) into a TouchDesigner project. Select the `PorousLanternRelease` component and choose **View → Open studio** for the preview and controls.
 
-- **Lantern · hero** runs the 48-second camera composition: a whole-object reveal, a controlled descent through three generations, and the return to the opening view.
-- **Sculpture orbit** moves around the entire object.
-- **Manual still** enables the Still page's depth, azimuth, elevation and field controls.
-- **Clock → Scrub** enables Phase for a fixed position in either animated camera. Live advances according to Loop seconds. Phase 0 and 1 represent the loop boundary.
-- **Exposure** defaults to 1.15.
+**Composition** offers Hero, Film, Mirror, Profile, Reverse, Interface and Within. **Play camera** selects Film and advances its 24-second camera cycle. To inspect a precise film view, turn Play camera off, select Film and adjust **Film phase** between 0 and 1. **Exposure** defaults to 1.3.
 
-The shader, atlas and callbacks are embedded when installed and remain in the saved `.toe`. Viewing a saved project does not require Python packages, the original file paths, or access to this repository. The atlas TOP is locked and treats its PNG as data, without a colour-space conversion. Do not unlock it unless rebuilding from the source files.
+The native preview is 640 × 360. The shader, actions and locked `reference_field` texture are embedded in the saved component. Leave that texture locked for portable viewing.
 
-The preview uses one sample per pixel. Rendering performance depends on the GPU; the heavy raymarcher is not guaranteed to play at the movie frame rate. The exported film advances by frame number, so slow rendering does not alter its timing.
+The film follows a slow arc and a closer view of the central interface. The Within preset looks into retained recursive detail; it does not demonstrate a whole-D replacement rule.
 
-## Stills and movies
+## Export
 
-**Still → Save current still** writes the current native TOP image to a lossless PNG. It works with any camera. Scrub first if you want an exact animation phase.
+1. Under **Export**, choose a **Save folder**. An absolute path makes the destination explicit; the default `../exports` is resolved from TouchDesigner's working directory.
+2. For movies, set **FFmpeg executable**, or make `ffmpeg` available on PATH. PNG export does not require FFmpeg.
+3. Set the composition, phase and exposure, then use **Save still** or **Render 24 second loop**.
 
-**Export → Render one loop** launches the repository's standalone OpenGL renderer and FFmpeg in the background. It uses the same shader and atlas as the TouchDesigner scene, with two subpixel samples, 1280 × 720 pixels, 24 fps and silent H.264 output. The default hero duration is 48 seconds. Live exports start at phase zero; Scrub exports start at the selected phase and complete one cycle. Choose the hero or orbit camera to enable movie export.
+| Output | Settings |
+| --- | --- |
+| Save still | Current composition and phase; lossless 1920 × 1080 PNG; two spatial samples per pixel. |
+| Render 24 second loop | Film camera from phase zero; 576 frames at 24 fps; 1280 × 720; silent H.264; two spatial samples per pixel. |
 
-The default hero filename is `Porous-Lantern-A-Closer-Look.mp4`. The orbit filename is `Porous-Lantern-Sculpture-Orbit.mp4`. If that file already exists, a timestamp is added to preserve the earlier export.
+Movie export uses its own fixed frame sequence, regardless of the selected preview composition or phase. Leave Exposure unchanged while exporting, because it is read as frames render. Export speed does not change the movie's duration.
 
-This is the same source-sharing export approach used in Sixfold. The MP4 is rendered by the external renderer, rather than captured from the TouchDesigner viewer or a Movie File Out TOP. There is no output upscaling.
+Every frame is rendered by the native GLSL TOP in tiles no larger than **320 × 180**. The rendered RGB tiles are read to the CPU and assembled into the frame. FFmpeg encodes those completed frames into the movie.
 
-The default **Save folder** is `../exports`, relative to the saved project. **Repository folder** defaults to `..`; it must contain `visuals/render.py`, `visuals/lantern.glsl` and `visuals/field.png`. The exporter checks that the source shader and atlas match the embedded versions before rendering. After editing either asset, reinstall and save the project to refresh its embedded copy.
+**Status** reports progress and completion. **Cancel export** takes effect at the next frame boundary and can leave a partial file. A completed export has a neighbouring `.json` receipt; movies also have a `.log` file. Failures produce an `.error.txt` file.
 
-Install [uv](https://docs.astral.sh/uv/) for automatic preparation of the export environment. It may download Python and dependencies on its first run. An external `python` on PATH is also supported if it already has `numpy`, `pillow`, `moderngl` and `imageio-ffmpeg`. TouchDesigner's bundled interpreter alone is not the export environment.
+The standard movie name is `Porous-Lantern-Mirrored-Form.mp4`. If that name exists, the studio chooses a timestamped name. Stills are timestamped PNGs. Export returns to the preview when complete.
 
-Status displays progress. **Cancel render** requests cancellation after the current frame. Settings and logs remain in the save folder's `logs` directory, and **Last movie**, **Last still** and **Export log** identify the outputs. Export settings are snapshotted at launch; later control changes do not affect a running movie.
+## Gallery-size stills
 
-## Rebuild the component
+The published hero master is 1920 × 1080; the other five gallery masters are 1920 × 1440. The Save still button uses 1920 × 1080. To request a 1920 × 1440 native export, choose the composition and run inside TouchDesigner:
 
-Run the installer from a TouchDesigner Text DAT or Textport, setting the repository's absolute location:
+```python
+studio = op('/project1/PorousLanternRelease')
+studio.op('actions').module.begin(
+    'C:/exports/Porous-Lantern.png', kind='still',
+    width=1920, height=1440, samples=2)
+```
+
+Adjust the component path if it was renamed or imported elsewhere, and choose the desired output path. Finish or cancel an active export before starting another.
+
+## Rebuild from source
+
+In a TouchDesigner Text DAT or Textport, set the repository location:
 
 ```python
 from pathlib import Path
-LANTERN_DIR = Path("C:/path/to/porous-lantern")
-exec((LANTERN_DIR / "touchdesigner" / "install.py").read_text(encoding="utf-8"))
+LANTERN_DIR = Path('C:/path/to/porous-lantern')
+exec((LANTERN_DIR / 'touchdesigner' / 'install.py').read_text(encoding='utf-8'))
 ```
 
-Alternatively, load the file into a DAT and call its module's `install(repository_folder)` function. Defining `LANTERN_DIR` when executing the file invokes installation automatically; importing it without that variable does not install anything.
+The installer creates or updates `/project1/PorousLanternRelease` and resets its custom controls to their defaults. Finish or cancel an export before reinstalling. A locked field texture remains embedded; to rebuild it from a changed `visuals/field.png`, unlock `reference_field` before running the installer. Wait for the preview to appear, then save the component or project.
 
-Reinstallation updates this named component and preserves existing custom-parameter values. It does not delete other project components. Finish or cancel an active export before reinstalling. Check the `sculpture` GLSL TOP for compile errors, confirm that the preview shows the Lantern, and save the project through TouchDesigner.
+## Verification scope
 
-The installer follows the existing Sixfold studio's node and parameter conventions. Native still saving uses the documented [TOP `save()` method](https://derivative.ca/UserGuide/TOP%20Class). A saved project and live TouchDesigner verification are separate from the Python source checks; consult the release's media record for which checks were completed.
+The native export was verified as a 24-second, 576-frame, 1280 × 720 movie at 24 fps with two spatial samples. The saved TOX passed a portable reload test with its embedded assets. The TOE was packaged from a clean project using that component; a separate fresh-process reopening of the TOE has not yet been tested.
+
+The [film receipt](../media/film-master.json) records the delivered movie. Mathematical claims about the displayed set and the limits of its finite envelope are documented in [results](../docs/results.md).

@@ -1,16 +1,17 @@
 {
   "film": {
     "url": "assets/porous-lantern-hero.mp4",
-    "download_url": "https://github.com/okwhynot-wtf/porous-lantern/releases/download/v1.0.0/Porous-Lantern-A-Closer-Look.mp4",
-    "caption": "A closer look. A 48-second silent journey from the whole Lantern through three generations and back. Native 720p, 24 fps.",
+    "download_url": "assets/porous-lantern-hero.mp4",
+    "title": "The mirrored form",
+    "caption": "The mirrored form. A 24-second silent camera study, rendered in TouchDesigner. 720p, 24 fps.",
     "poster": "assets/lantern-hero.jpg"
   },
   "stills": [
-    {"slug": "lantern-hero", "title": "The Lantern", "caption": "The complete form, rendered in copper and teal.", "alt": "Porous Lantern, a copper-and-teal eight-lobed fractal around a central opening", "width": 1920, "height": 1080},
-    {"slug": "lantern-front", "title": "Eightfold", "caption": "The arrangement seen along its symmetry axis.", "alt": "The Lantern viewed along its axis, showing its eightfold rotational symmetry"},
-    {"slug": "lantern-side", "title": "In profile", "caption": "The depth and folds of the spatial construction.", "alt": "A side view of the Lantern showing its nonplanar folds and depth"},
-    {"slug": "lantern-back", "title": "The other side", "caption": "A different view of the same fixed geometry.", "alt": "The opposite side of the Porous Lantern fractal"},
-    {"slug": "lantern-detail", "title": "Within a lobe", "caption": "Smaller copies become visible in a close view.", "alt": "A close view of one lobe, revealing repeated smaller Lantern structures"},
-    {"slug": "lantern-zoom", "title": "A smaller world", "caption": "Following the construction into finer detail.", "alt": "A deeper view into the Lantern's repeated geometry"}
+    {"slug": "lantern-hero", "title": "The Lantern", "caption": "Two mirrored halves, rendered in copper and teal.", "alt": "Porous Lantern: two porous mirrored forms in copper and teal meeting along a central plane", "width": 1920, "height": 1080},
+    {"slug": "lantern-front", "title": "Mirror partners", "caption": "The complete silhouette and its paired openings.", "alt": "The complete mirrored Lantern with matching openings on either side of the central interface"},
+    {"slug": "lantern-side", "title": "In profile", "caption": "An oblique view reveals the depth of the two halves.", "alt": "An oblique view of the mirrored Lantern showing its curved spatial forms"},
+    {"slug": "lantern-back", "title": "The other side", "caption": "The reverse of the same fixed geometry.", "alt": "The back of the mirrored Lantern, with teal on the left and copper on the right"},
+    {"slug": "lantern-detail", "title": "At the interface", "caption": "Matching boundary traces meet at the plane of reflection.", "alt": "A close view of copper and teal fractal branches meeting at the central interface"},
+    {"slug": "lantern-zoom", "title": "Within", "caption": "A closer view inside the copper half reveals repeated recursive motifs.", "alt": "Small ring-like recursive forms within the copper half of Porous Lantern"}
   ]
 }

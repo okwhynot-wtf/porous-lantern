@@ -1,24 +1,19 @@
 {
-  "decoded_frames": 1152,
-  "metadata": {
-    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
-    "codec": "h264",
-    "pix_fmt": "yuv420p(progressive)",
-    "fps": 24.0,
-    "source_size": [
-      1280,
-      720
-    ],
-    "size": [
-      1280,
-      720
-    ],
-    "rotate": 0,
-    "duration": 48.0
-  },
-  "seam_mean_abs_difference_8bit": 1.7470844184027778,
-  "min_frame_mean": 10.251932508680556,
-  "max_frame_mean": 72.09384512442129,
-  "web_bytes": 20943393,
-  "web_sha256": "4d070dda475be1b3df7c6d2b8e0080703ba351fe361106cd34de5f2d7007b526"
+  "date": "2026-11-22",
+  "renderer": "Native TouchDesigner GLSL TOP",
+  "decoded_frames": 576,
+  "duration_seconds": 24,
+  "fps": 24,
+  "dimensions": [
+    1280,
+    720
+  ],
+  "audio": false,
+  "native_direct_vs_tiled_mean_absolute_error_8bit": 0.0006669560185185185,
+  "first_last_mean_absolute_difference_8bit": 4.089646629050926,
+  "distinct_sampled_frames": 6,
+  "stills_count": 6,
+  "stills_renderer": "Native TouchDesigner GLSL TOP",
+  "ffmpeg_role": "CPU video encoding only; no geometry rendering",
+  "film_sha256": "3763f551b7a4f46eae95c06ab58d9949942fce179a3db19060760900c9de0939"
 }
